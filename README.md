@@ -4,6 +4,7 @@
 this is just some shitty email spammer script i made to flood inboxes of people i don't like
 it may send a few emails but i didn't bother too much with optimisation
 on average there is about a 60% success rate
+keep in mind that i live in the United Kingdom so some apis may not work in your region
 
 # examples
 
