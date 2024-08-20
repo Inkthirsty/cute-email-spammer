@@ -510,7 +510,7 @@
     }
   },
   "wizishop": {
-    "url": "https://kanceptkrama.by/create-account/",
+    "url": "https://wizishop.com/api/shops",
     "method": "POST",
     "data": {
       "prospect": "",
@@ -527,68 +527,6 @@
       "id_customer": "",
       "primary": "#06476D",
       "type": "wz_default"
-    }
-  },
-  "boulanger": {
-    "url": "https://login.boulanger.com/identity/v1/signup",
-    "method": "POST",
-    "json": {
-      "client_id": "QmofH7P73vSvG7H1lJqo",
-      "redirect_url": "https://www.boulanger.com/account/email-validation",
-      "scope": "openid profile email phone address bl:companies.company:read:all bl:companies.company:write:all bl:contact.contact:read:self bl:contact.contact:write:self bl:customer.aftersale.intervention:read:self bl:customer.customer:read:self bl:customer.customer:write:self bl:customer.delivery:read:self bl:customer.invoice:read:self bl:customer.loyalty:read:self bl:customer.loyalty:write:self bl:customer.review:read:self bl:customer.review:write:self bl:customer.sale:read:self bl:customer.sale:write:self bl:customer.subscribe:write:self bl:sales.sale:read:self bl:service.giftcard.debit.request:all bl:service.giftcard:read:all bl:service.insurance.contract:read:self bl:service.insurance.request:self bl:service.insurance:read:self events full_write mfa offline_access",
-      "data": {
-        "gender": "female",
-        "given_name": "Monkey",
-        "family_name": "Gay",
-        "password": "{password}",
-        "birthdate": "2001-11-09",
-        "email": "sub",
-        "phone_number": "+33{frenchnumber}",
-        "addresses": [
-          {
-            "title": "Adresse de facturation",
-            "default": true,
-            "address_type": "billing",
-            "street_address": "\\r\\r\\r\\r\\r\\r11 French Street\\r",
-            "locality": "PARIS 09",
-            "region": "75109",
-            "postal_code": "75009",
-            "country": "FRA",
-            "recipient": "female\\rMonkey\\rGay",
-            "phone_number": "+33745432257"
-          }
-        ],
-        "custom_fields": {
-          "civility": "female",
-          "id_category": "private_individual",
-          "business_name1": null,
-          "company_type1": null,
-          "mobile_prefix1": "+33",
-          "mobile_number1": "745432258",
-          "email_address1": "{email}",
-          "favorite_shop": "F550",
-          "opposition": true,
-          "date_opposition": "2024-08-17"
-        },
-        "consents": {
-          "optin_newsletter": {
-            "granted": true,
-            "consent_type": "opt-in"
-          },
-          "optin_post": {
-            "granted": true,
-            "consent_type": "opt-in"
-          },
-          "optin_sms": {
-            "granted": true,
-            "consent_type": "opt-in"
-          },
-          "optin_survey": {
-            "granted": true,
-            "consent_type": "opt-in"
-          }
-        }
-      }
     }
   }
 }
