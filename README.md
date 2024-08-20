@@ -6,6 +6,7 @@
 3. let it do its magic
 4. enjoy ^_^
 5. there is no step 5
+  
 i might make an exe version + a web version if i can be bothered lol
 
 ## tldr
