@@ -2,7 +2,7 @@
 
 ## how to use
 1. run the script
-2. insert email
+2. paste email
 3. let it do its magic
 4. enjoy ^_^
 5. there is no step 5
