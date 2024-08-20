@@ -1,5 +1,13 @@
 # cute-email-spammer
 
+## how to use
+1. run the script
+2. insert email
+3. let it do its magic
+4. enjoy ^_^
+5. there is no step 5
+i might make an exe version + a web version if i can be bothered lol
+
 ## tldr
 - this is just some shitty email spammer script i made
 - you can flood inboxes of people u don't like
