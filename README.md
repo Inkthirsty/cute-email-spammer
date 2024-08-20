@@ -18,7 +18,7 @@ i might make an exe version + a web version if i can be bothered lol
 
 ## examples
 here's the aftermath of 1 thread
-![image](https://github.com/user-attachments/assets/4d89779b-600e-473e-861f-e55acc7cb411)
+![image](https://github.com/user-attachments/assets/400a61ba-f6df-4be2-b01e-28b46d0bbccc)
 now imagine that multiplied by 1000
 
 here's the aftermath of 1000 threads
