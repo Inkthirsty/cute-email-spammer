@@ -2,7 +2,7 @@ import asyncio, aiohttp, time, re, random, string, itertools, os, json
 
 # CONFIG ^_^
 size = 500 # threads per iteration
-cap = 1000  # thread limit / set to None for unlimited (i do NOT recommend higher than 1000)
+cap = None  # thread limit / set to None for unlimited (i do NOT recommend higher than 1000)
 
 # skidded from chatgpt lololol!!
 def generate_email_variants(email):
@@ -52,7 +52,7 @@ def update_progress():
     global progress
     progress += 1
     decimal = progress / total
-    amount = 20
+    amount = 50
 
     white = "█" * int(amount - int((1 - decimal) * amount))
     black = "░" * int(amount - int(decimal * amount))
@@ -134,6 +134,7 @@ async def main():
     variants = generate_email_variants(email)
 
     threads = None
+    print("(i do NOT recommend more than 1000 threads)")
     while True:
         try:
             limit = clamp(len(variants), 1, cap or float("inf"))
@@ -149,12 +150,15 @@ async def main():
     total = len(functions) * len(variants)
     divide()
     print("📌 useless session info")
-    print("EMAIL:", email)
-    print("THREADS:", len(variants))
-    print("PASSWORD:", password)
+    info = {
+        "THREADS": threads,
+        "EMAIL": email,
+        "PASSWORD": password,
+    }
+    print("\n".join([f"{k.upper()}: {v}" for k, v in info.items()]))
     divide()
     print(f"😼 sending some cute emails :3")
-    print("🔋 initializing threads...", end="\r")
+    print("🔋 initializing...", end="\r")
     start = time.time()
     async with aiohttp.ClientSession() as session:
         tasks = [asyncio.create_task(fetch(session, sub, values)) for sub in variants for values in functions.values()]
@@ -168,6 +172,7 @@ async def main():
 
 if __name__ == "__main__":
     try:
+        # real programmers would tell me this is unnecessary but i hate the constant "EVENT LOOP ENDED" errors so this shuts it up sometimes
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     except Exception:
         pass
