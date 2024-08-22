@@ -52,8 +52,7 @@ def update_progress():
     global progress
     progress += 1
     decimal = progress / total
-    amount = 50
-
+    amount = 30
     white = "█" * int(amount - int((1 - decimal) * amount))
     black = "░" * int(amount - int(decimal * amount))
     print(f"⚡ {progress}/{total} {round(decimal*100, 1):.1f}%「{white}{black}」", end="\r")
@@ -107,7 +106,6 @@ async def main():
             async with session.get("https://raw.githubusercontent.com/Inkthirsty/cute-email-spammer/main/functions.json") as resp:
                 functions = await resp.json()
                 print("beep boop data downloaded")
-        
         # https://patorjk.com/software/taag/#p=display&h=1&v=1&f=Bloody&t=CUTE%20EMAIL%20SPAMMER
         print("""
         ▄████▄   █    ██ ▄▄▄█████▓▓█████    ▓█████  ███▄ ▄███▓ ▄▄▄       ██▓ ██▓         ██████  ██▓███   ▄▄▄       ███▄ ▄███▓ ███▄ ▄███▓▓█████  ██▀███  

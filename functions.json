@@ -528,5 +528,26 @@
       "primary": "#06476D",
       "type": "wz_default"
     }
+  },
+  "pubmeeple": {
+    "url": "https://pubapi.pubmeeple.com/user/",
+    "method": "POST",
+    "json": {
+      "name": "registerUser",
+      "param": {
+        "email": "{email}",
+        "name": "{username}"
+      }
+    }
+  },
+  "speedrun": {
+    "url": "https://www.speedrun.com/api/v2/PutAuthSignup",
+    "method": "POST",
+    "json": {
+      "name": "{username}",
+      "password": "{password}",
+      "email": "{email}",
+      "areaId": "as"
+    }
   }
 }
