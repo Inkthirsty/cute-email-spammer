@@ -7,7 +7,9 @@
 4. enjoy ^_^
 5. there is no step 5
   
-i might make an exe version + a web version if i can be bothered lol
+i wanted to make an exe version but it requires install
+
+i also wanted a web version but im bad at javascript and chatgpt cannot make it properly
 
 ## tldr
 - this is just some shitty email spammer script i made
