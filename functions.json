@@ -549,5 +549,16 @@
       "email": "{email}",
       "areaId": "as"
     }
+  },
+  "character.ai": {
+    "url": "https://character.ai/api/trpc/auth.login?batch=1",
+    "method": "POST",
+    "json": {
+      "0": {
+        "json": {
+          "email": "{email}"
+        }
+      }
+    }
   }
 }

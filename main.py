@@ -133,7 +133,10 @@ async def main():
                 break
             print("🤬 invalid email")
 
-        variants = generate_email_variants(email)
+        if len(email.split("@")[0]) >= 20:
+            variants = [email]
+        else:
+            variants = generate_email_variants(email)
 
         threads = None
         print("(i do NOT recommend more than 1000 threads)")
