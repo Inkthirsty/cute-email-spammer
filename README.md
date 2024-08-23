@@ -25,5 +25,4 @@ now imagine that multiplied by 1000
 
 here's the aftermath of 1000 threads
 (i flooded my own inbox for this)
-![image](https://github.com/user-attachments/assets/9de64c24-8466-44a4-83ea-50891bb30aa9)
 ![image](https://github.com/user-attachments/assets/91ab74e0-ac8c-4cfe-8a73-5e7ae09bb117)
