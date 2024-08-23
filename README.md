@@ -15,7 +15,7 @@ i also wanted a web version but im bad at javascript and chatgpt cannot make it 
 - this is just some shitty email spammer script i made
 - you can flood inboxes of people u don't like
 - i didn't bother too much with optimisation
-- 60% success rate (some apis might have changed because of me lol)
+- 60% success rate (some apis might have changed how they work because of me lol)
 - i live in the uk so some apis may not work for you
 
 ## examples
