@@ -144,7 +144,7 @@ async def main():
                 break
             print("🤬 invalid email")
 
-        if len(email.split("@")[0]) >= 30:
+        if len(email.split("@")[0]) >= 24:
             variants = [email]
         else:
             variants = generate_email_variants(email)

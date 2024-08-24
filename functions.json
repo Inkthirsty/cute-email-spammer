@@ -123,19 +123,6 @@
       }
     }
   },
-  "arcana": {
-    "url": "https://passwordless.arcana.network/oauth2/authorize",
-    "method": "GET",
-    "params": {
-      "client_id": "4fe5879540c6db0ba158213a971a09cfbb7d2db4",
-      "redirect_uri": "https://auth.arcana.network/verify/4fe5879540c6db0ba158213a971a09cfbb7d2db4/",
-      "state": "eyJ0IjoicGFzc3dvcmRsZXNzVjIiLCJpIjoiX2V6czVwNDZjMiJ9",
-      "json": "true",
-      "response_type": "code",
-      "email": "{email}",
-      "kind": "otp"
-    }
-  },
   "glasses_store": {
     "url": "https://glassesstore.co.uk/my-account/edit-account/",
     "data": {
@@ -335,20 +322,6 @@
       "Sec-Fetch-Dest": "empty",
       "Sec-Fetch-Mode": "cors",
       "Sec-Fetch-Site": "same-origin"
-    }
-  },
-  "interflora": {
-    "url": "https://www.interflora.co.uk/api/auth/register",
-    "data": {
-      "firstName": "{random}",
-      "lastName": "Gray",
-      "email": "{email}",
-      "password": "{password}",
-      "marketing": true,
-      "optInEmail": true,
-      "optInOnline": true,
-      "optInSms": true,
-      "optInPost": true
     }
   },
   "giftstore": {
