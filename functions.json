@@ -340,8 +340,8 @@
   "interflora": {
     "url": "https://www.interflora.co.uk/api/auth/register",
     "data": {
-      "firstName": "Adam",
-      "lastName": "Gay",
+      "firstName": "{random}",
+      "lastName": "Gray",
       "email": "{email}",
       "password": "{password}",
       "marketing": true,

