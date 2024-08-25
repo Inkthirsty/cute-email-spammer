@@ -6,15 +6,14 @@
 3. let it do its magic
 4. enjoy ^_^
 5. there is no step 5
+![image](https://github.com/user-attachments/assets/c68dd939-f67e-4557-84d7-f2f3e412098a)
 
 ## info
-if you for some reason need to flood people's inboxes please only use it on bad people
-
-## tldr
+- if you for some reason need to flood people's inboxes please only use it on bad people
 - this is just some shitty email spammer script i made
-- you can flood inboxes of people u don't like
-- i didn't bother too much with optimisation
-- 60% success rate (some apis might have changed how they work because of me lol)
+- u can flood inboxes of people u don't like
+- i didn't bother with optimisation so ur gonna have to be patient
+- around 70% success rate (some apis might have changed how they work because of me lol)
 - i live in the uk so some apis may not work for you
 
 ## extra info
