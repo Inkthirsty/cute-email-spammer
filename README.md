@@ -30,4 +30,7 @@ now imagine that multiplied by 1000
 here's the aftermath of 1000 threads
 (this is only one page and i flooded my own inbox for this)
 ![image](https://github.com/user-attachments/assets/cd3b0917-91db-4838-b9b4-9415f78d9234)
+other aftermaths
+![image](https://github.com/user-attachments/assets/dc260e03-2b79-4ac6-99ff-ae86642ae487)
+![image](https://github.com/user-attachments/assets/c97b3396-09bb-4e89-a8d9-98e9e42efba4)
 
