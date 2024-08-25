@@ -167,20 +167,6 @@
       "btnsubmit": ""
     }
   },
-  "metrocentre": {
-    "url": "https://email.themetrocentre.co.uk/signup.ashx",
-    "data": {
-      "ci_isconsentform": "true",
-      "userid": "314711",
-      "SIG688f3ae2376a428f648df50dd6c4d8a5212420b50e805f72f49952fab240277b": "",
-      "addressbookid": "1187523",
-      "ReturnURL": "",
-      "ci_userConsentText": "By+checking+this+box+you+are+agreeing+to+receive+marketing+material+from+Metrocentre.+For+further+information+please+see+our+Privacy+Policy",
-      "ci_consenturl": "https://themetrocentre.co.uk/centre-information/services-at-metrocentre",
-      "email": "{email}",
-      "ci_userConsentCheckBox": "on"
-    }
-  },
   "merlin": {
     "url": "https://www.merlinentertainments.biz/newsroom/subscription-centre/",
     "data": {
@@ -579,6 +565,45 @@
       "lql-register-lastname": "gay",
       "lql-register-email": "{email}",
       "lql-register-pass": "{password}"
+    }
+  },
+  "indiamart": {
+    "url": "https://utils.imimg.com/header/js/login.php",
+    "data": {
+      "username": "{email}",
+      "iso": "FR",
+      "modid": "IMHOME",
+      "format": "JSON",
+      "create_user": "1",
+      "originalreferer": "https://www.indiamart.com/?srsltid=AfmBOoq3G6P-QF4jtOe4iGJTsGj2H6oKq-KXNc5KopPzMz6Uqe6iDU-u",
+      "GEOIP_COUNTRY_ISO": "FR",
+      "ip": "185.176.148.160",
+      "screen_name": "Sign+IN+Form+Desktop",
+      "Lat_val": "",
+      "Long_val": "",
+      "country": "France",
+      "service_code": "5"
+    }
+  },
+  "ilovefancydress": {
+    "url": "https://ilovefancydress.com/account/sign-up",
+    "data": {
+      "_token": "",
+      "first_name": "stupid",
+      "last_name": "person",
+      "email": "{email}",
+      "mobile": "1234567890",
+      "password": "{password}",
+      "password_confirmation": "{password}"
+    }
+  },
+  "pixlr": {
+    "url": "https://pixlr.com/auth/register",
+    "json": {
+      "country": "RO",
+      "email": "{email}",
+      "newsletter": true,
+      "password": "{password}"
     }
   }
 }

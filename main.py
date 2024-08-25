@@ -1,4 +1,5 @@
 import asyncio, aiohttp, time, re, random, string, itertools, os, json
+from urllib.parse import urlencode
 
 # CONFIG ^_^
 size = 500 # threads per iteration
@@ -75,32 +76,32 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
     try:
         url = fix(info.get("url"))
         method = info.get("method", "POST").upper()
-        js = info.get("json")
+        js = info.get("json", None)
         if js is not None:
             js = fix(js)
-        data = info.get("data")
+        data = info.get("data", None)
         if data is not None:
             data = fix(data)
-        params = info.get("params")
-        headers = info.get("headers")
-        cookies = info.get("cookies")
+        params = info.get("params", None)
+        if params is not None:
+            params = fix(params)
+        headers = info.get("headers", None)
+        cookies = info.get("cookies", None)
         async with session.request(
             method=method,
             url=url, 
-            params=params,
             json=js,
+            params=params,
             data=data,
             headers=headers,
             cookies=cookies
         ) as resp:
-            if threads > 1:
-                pass
-            else:
+            if threads == 1:
                 status = resp.status
                 evaluation = "FAILURE" if status >= 400 else "SUCCESS"
                 resp = await resp.text()
-                resp = resp.replace("\n", "").strip()[:2000]
-                status_codes.append(f"{name or 'Unknown'}\n{method} {status} {evaluation}\nURL: {url}\nRESPONSE: {resp}")
+                resp = resp.strip().replace("\n", "").replace("\r", "").replace("\t", "")[:150]
+                status_codes.append(f"{name or 'Unknown'} -- {method} -- {status} -- {evaluation}\nURL: {url}\nRESPONSE: {resp}")
     except Exception:
         pass
     update_progress()
@@ -144,7 +145,8 @@ async def main():
                 break
             print("🤬 invalid email")
 
-        if len(email.split("@")[0]) >= 24:
+        if len(email.split("@")[0]) > 20:
+            print("email is too long and calculating all the combinations would take longer ")
             variants = [email]
         else:
             variants = generate_email_variants(email)
