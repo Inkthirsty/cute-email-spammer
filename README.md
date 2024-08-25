@@ -7,7 +7,7 @@
 4. enjoy ^_^
 5. there is no step 5
    
-![image](https://github.com/user-attachments/assets/c68dd939-f67e-4557-84d7-f2f3e412098a)
+![image](https://github.com/user-attachments/assets/ca81148e-b774-4bc3-a988-ad5248d3bf90)
 
 ## info
 - if you for some reason need to flood people's inboxes please only use it on bad people
