@@ -6,6 +6,7 @@
 3. let it do its magic
 4. enjoy ^_^
 5. there is no step 5
+   
 ![image](https://github.com/user-attachments/assets/c68dd939-f67e-4557-84d7-f2f3e412098a)
 
 ## info
@@ -24,12 +25,10 @@
 ## examples
 ### here's the aftermath of 1 thread
 ![image](https://github.com/user-attachments/assets/400a61ba-f6df-4be2-b01e-28b46d0bbccc)
-now imagine that multiplied by 1000
-
-### here's the aftermath of 1000 threads
-(this is only one page and i flooded my own inbox for this)
-![image](https://github.com/user-attachments/assets/cd3b0917-91db-4838-b9b4-9415f78d9234)
-### other aftermaths
+### here's the instant aftermaths of 1000 threads
 ![image](https://github.com/user-attachments/assets/dc260e03-2b79-4ac6-99ff-ae86642ae487)
 ![image](https://github.com/user-attachments/assets/c97b3396-09bb-4e89-a8d9-98e9e42efba4)
+### here's the aftermath of 1000 threads after 24 hours
+(this is only one page and i flooded my own inbox for this)
+![image](https://github.com/user-attachments/assets/cd3b0917-91db-4838-b9b4-9415f78d9234)
 
