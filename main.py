@@ -11,9 +11,15 @@ def generate_email_variants(email):
     variants = []
 
     for i in range(1, len(username)):
+        if len(variants) >= 5000:
+            break
         for combo in itertools.combinations(range(1, len(username)), i):
+            if len(variants) >= 5000:
+                break
             variant = username
             for index in reversed(combo):
+                if len(variants) >= 5000:
+                    break
                 variant = variant[:index] + '.' + variant[index:]
             variants.append(variant)
 
@@ -145,12 +151,7 @@ async def main():
                 break
             print("🤬 invalid email")
 
-        if len(email.split("@")[0]) > 20:
-            print("email is too long and calculating all the combinations would take longer ")
-            variants = [email]
-        else:
-            variants = generate_email_variants(email)
-
+        variants = generate_email_variants(email)
         threads = None
         print("(i do NOT recommend more than 1000 threads)")
         while True:

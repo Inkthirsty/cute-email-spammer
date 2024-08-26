@@ -605,5 +605,24 @@
       "newsletter": true,
       "password": "{password}"
     }
+  },
+  "wolfram":{
+	  "url":"https://account.wolfram.com/login/create",
+	  "data":{
+	"email": "{email}",
+	"firstName": "wtf",
+	"lastName": "fuckoff",
+	"password": "{password}",
+	"passwordConfirm": "{password}",
+	"accountAgreement": "true",
+	"_accountAgreement": "on",
+	"access": "",
+	"afe82bd9-8f0e-47fb-b957-84a289587f6e": "",
+	"timeZone": "Europe/London",
+	"_csrf": [
+		"16845c16-8564-44be-bd23-095e73965ba1",
+		"16845c16-8564-44be-bd23-095e73965ba1"
+	]
+}
   }
 }
