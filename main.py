@@ -11,14 +11,14 @@ def generate_email_variants(email):
     variants = []
 
     for i in range(1, len(username)):
-        if len(variants) >= 5000:
+        if len(variants) >= 9999:
             break
         for combo in itertools.combinations(range(1, len(username)), i):
-            if len(variants) >= 5000:
+            if len(variants) >= 9999:
                 break
             variant = username
             for index in reversed(combo):
-                if len(variants) >= 5000:
+                if len(variants) >= 9999:
                     break
                 variant = variant[:index] + '.' + variant[index:]
             variants.append(variant)
