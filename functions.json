@@ -605,5 +605,27 @@
       "newsletter": true,
       "password": "{password}"
     }
+  },
+  "911 memorial": {
+    "url": "https://www.911memorial.org/user/register",
+    "data": {
+      "mail": "{email}",
+      "name": "{username}",
+      "pass[pass1]": "idid9/11_XD",
+      "pass[pass2]": "idid9/11_XD",
+      "field_address[given_name]": "Michael",
+      "field_address[family_name]": "Jackson",
+      "registry_address[country_code]": "",
+      "registry_address[langcode]": "",
+      "registry_phone": "",
+      "registry_website": "",
+      "patron_id": "",
+      "is_subscribe": "1",
+      "form_build_id": "form-sfwrQ8notWGt6qZMvrB88Q181mzhOVlEZHAJqWV9LxA",
+      "form_id": "user_register_form",
+      "honeypot_time": "Zo79Gmi_hhrBQsHqYb846uVAmCEOSY4zzto-2ptgImw",
+      "op": "Create+new+account",
+      "url": ""
+    }
   }
 }

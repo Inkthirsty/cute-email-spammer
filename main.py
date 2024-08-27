@@ -177,6 +177,11 @@ async def main():
         }
         print("\n".join([f"{k.upper()}: {v}" for k, v in info.items()]))
         divide()
+        if threads == 1:
+            lol = input("debug mode is active, type Y to only test the last function ").strip().lower()
+            if lol == "y":
+                total = 1
+                functions = dict([next(reversed(functions.items()))])
         print(f"😼 sending some cute emails :3")
         print("🔋 initializing...", end="\r")
         start = time.time()
