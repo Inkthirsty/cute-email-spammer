@@ -1,11 +1,11 @@
 # cute-email-spammer
 
 ## how to use
-1. run the script
-2. paste email
-3. let it do its magic
-4. enjoy ^_^
-5. there is no step 5
+1. pip install aiohttp urllib
+2. run the script
+3. paste email
+4. let it do its magic
+5. enjoy ^_^
    
 ![image](https://i.redd.it/ruoy22fr7wkd1.png)
 
@@ -24,11 +24,14 @@
 
 ## examples
 ### here's the aftermath of 1 thread
-![image](https://github.com/user-attachments/assets/400a61ba-f6df-4be2-b01e-28b46d0bbccc)
-### here's the instant aftermaths of 1000 threads
+![image](https://github.com/user-attachments/assets/03d0e1b6-2827-432e-a452-c0f1cfaa6504)
+![image](https://github.com/user-attachments/assets/ea83f063-3fbf-453d-a9f2-d26e1cf402dc)
+
+### here's the instant aftermath of 1000 threads
 ![image](https://github.com/user-attachments/assets/dc260e03-2b79-4ac6-99ff-ae86642ae487)
 ![image](https://github.com/user-attachments/assets/c97b3396-09bb-4e89-a8d9-98e9e42efba4)
+
 ### here's the aftermath of 1000 threads after 24 hours
-(this is only one page and i flooded my own inbox for this)
+(i flooded my own inbox for this)
 ![image](https://github.com/user-attachments/assets/cd3b0917-91db-4838-b9b4-9415f78d9234)
 
