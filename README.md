@@ -7,7 +7,7 @@
 4. let it do its magic
 5. enjoy ^_^
    
-![image](https://i.redd.it/ruoy22fr7wkd1.png)
+![image](https://github.com/user-attachments/assets/6b594e98-40db-4bc5-a55d-e8516fb959d8)
 
 ## info
 - if you for some reason need to flood people's inboxes please only use it on bad people
