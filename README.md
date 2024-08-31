@@ -1,8 +1,11 @@
 # cute-email-spammer
 
 if you want some easy throwaway emails
+
 https://mail.tm/en/
+
 https://mail.gw/en/
+
 https://temp-mail.io/en
 
 ## how to use
