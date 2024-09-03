@@ -136,8 +136,9 @@ async def main():
     ░                                                                                                                                                 
         """)
     async with aiohttp.ClientSession() as session:
+        directory = os.path.dirname(__file__)
         try:
-            with open("functions.json", "r") as file:
+            with open(f"{directory}\\functions.json", "r") as file:
                 functions = json.load(file)
         except Exception:
             print("⚠️ error ⚠️⚠️error no data found!!")
@@ -214,7 +215,7 @@ async def main():
             try: await asyncio.gather(*tasks[j:j+size])
             except Exception: pass
             await asyncio.sleep(1)
-        with open("results.txt", "w", encoding="utf-8") as file:
+        with open(f"{directory}\\results.txt", "w", encoding="utf-8") as file:
             file.write("\n\n".join([(f"{name or 'Unknown'} -- {values['method']} -- {values['status']} -- {values['evaluation']}\nURL: {values['url']}\nRESPONSE: {values['resp']}") for name, values in status_codes.items()]))
         taken = time.time() - start
         minutes, seconds = int(taken // 60), int(taken % 60)
