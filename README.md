@@ -1,5 +1,7 @@
 # cute-email-spammer
 
+tldr: this is some script that signs up the entered email for random services. this wasnt a serious project so its not very fast or well presented but if you for some reason need to use this then enjoy...
+
 if you want some easy throwaway emails
 
 https://mail.tm/en/
