@@ -823,5 +823,14 @@
       "UserLastname": "itout",
       "newsletter": "Y"
     }
+  
+  },
+  "upcoming":{
+	  "url":"https://upcoming.nl/api/subscribe/esp",
+	  "json":{
+	"email": "{email}",
+	"isDirty": true,
+	"isValid": true
+}
   }
 }

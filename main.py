@@ -3,7 +3,7 @@ from urllib.parse import urlencode
 
 # CONFIG ^_^
 size = 500 # threads per iteration
-cap = 200  # thread limit / set to None for unlimited (i do NOT recommend higher than 1000)
+cap = None  # thread limit / set to None for unlimited (i do NOT recommend higher than 500)
 
 # skidded from chatgpt
 def generate_email_variants(email):
@@ -138,7 +138,7 @@ async def main():
     async with aiohttp.ClientSession() as session:
         directory = os.path.dirname(__file__)
         try:
-            with open(f"{directory}\\functions.json", "r") as file:
+            with open(os.path.join(directory, "functions.json"), "r") as file:
                 functions = json.load(file)
         except Exception:
             print("⚠️ error ⚠️⚠️error no data found!!")
@@ -162,6 +162,7 @@ async def main():
 
         variants = generate_email_variants(email)
         threads = None
+        print("(i do NOT recommend more than 500 threads for your computer's sake)")
         while True:
             try:
                 limit = clamp(len(variants), 1, cap or float("inf"))
@@ -215,7 +216,7 @@ async def main():
             try: await asyncio.gather(*tasks[j:j+size])
             except Exception: pass
             await asyncio.sleep(1)
-        with open(f"{directory}\\results.txt", "w", encoding="utf-8") as file:
+        with open(os.path.join(directory, "results.txt"), "w", encoding="utf-8") as file:
             file.write("\n\n".join([(f"{name or 'Unknown'} -- {values['method']} -- {values['status']} -- {values['evaluation']}\nURL: {values['url']}\nRESPONSE: {values['resp']}") for name, values in status_codes.items()]))
         taken = time.time() - start
         minutes, seconds = int(taken // 60), int(taken % 60)
