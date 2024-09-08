@@ -3,7 +3,7 @@ from urllib.parse import urlencode
 
 # CONFIG ^_^
 size = 500 # threads per iteration
-cap = 200  # thread limit / set to None for unlimited (i do NOT recommend higher than 500)
+cap = 500  # thread limit / set to None for unlimited (i do NOT recommend higher than 500)
 
 # skidded from chatgpt
 def generate_email_variants(email):
@@ -120,7 +120,8 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
                 }
     except (Exception, asyncio.TimeoutError):
         pass
-    update_progress()
+    return update_progress()
+    
 
 async def main():
     print("""
@@ -135,7 +136,8 @@ async def main():
     ░ ░         ░                 ░  ░      ░  ░       ░         ░  ░ ░      ░  ░         ░                 ░  ░       ░          ░      ░  ░   ░     
     ░                                                                                                                                                 
         """)
-    async with aiohttp.ClientSession() as session:
+    timeout = aiohttp.ClientTimeout(total=10)
+    async with aiohttp.ClientSession(timeout=timeout) as session:
         directory = os.path.dirname(__file__)
         try:
             with open(os.path.join(directory, "functions.json"), "r") as file:
@@ -220,7 +222,7 @@ async def main():
             file.write("\n\n".join([(f"{name or 'Unknown'} -- {values['method']} -- {values['status']} -- {values['evaluation']}\nURL: {values['url']}\nRESPONSE: {values['resp']}") for name, values in status_codes.items()]))
         taken = time.time() - start
         minutes, seconds = int(taken // 60), int(taken % 60)
-        print(f"🤣 attempted to send {total:,} emails in {minutes}:{seconds:02} seconds")
+        print(f"🤣 attempted to send {total:,} emails in {minutes}:{seconds:02}")
         print("remember that some emails will be delayed or never arrive")
         async with session.get("https://raw.githack.com/Inkthirsty/cute-email-spammer/main/adjectives.json") as resp:
             words = ", ".join(random.sample(await resp.json(), k=5))
