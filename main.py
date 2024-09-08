@@ -3,7 +3,7 @@ from urllib.parse import urlencode
 
 # CONFIG ^_^
 size = 500 # threads per iteration
-cap = None  # thread limit / set to None for unlimited (i do NOT recommend higher than 500)
+cap = 200  # thread limit / set to None for unlimited (i do NOT recommend higher than 500)
 
 # skidded from chatgpt
 def generate_email_variants(email):
