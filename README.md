@@ -11,7 +11,7 @@ https://mail.gw/en/
 https://temp-mail.io/en
 
 ## how to use
-1. pip install aiohttp urllib
+1. pip install aiohttp
 2. run the script
 3. paste email
 4. let it do its magic
