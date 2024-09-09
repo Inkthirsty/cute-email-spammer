@@ -1,5 +1,4 @@
 import asyncio, aiohttp, time, re, random, string, itertools, os, json
-from urllib.parse import urlencode
 
 # CONFIG ^_^
 size = 500 # threads per iteration
