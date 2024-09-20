@@ -538,7 +538,7 @@
       "wc_order_attribution_user_agent": "Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64;+rv:129.0)+Gecko/20100101+Firefox/129.0",
       "woocommerce-register-nonce": "3c8b1b741b",
       "_wp_http_referer": "/mon-compte/",
-      "register": "S\u00e2\u20ac\u2122enregistrer"
+      "register": "Sâ€™enregistrer"
     }
   },
   "autour du gateau": {
@@ -679,7 +679,7 @@
       "flowKey": "crm",
       "languageOptions": "en",
       "legalConsent": {
-        "consentText": "We\u00e2\u20ac\u2122re committed to your privacy. HubSpot uses the information you provide to us to contact you about our relevant content, products, and services. You may unsubscribe from these communications at any time. For more information, check out our https://legal.hubspot.com/privacy-policy",
+        "consentText": "Weâ€™re committed to your privacy. HubSpot uses the information you provide to us to contact you about our relevant content, products, and services. You may unsubscribe from these communications at any time. For more information, check out our https://legal.hubspot.com/privacy-policy",
         "legitimateInterest": true
       },
       "locale": "English",
@@ -724,7 +724,7 @@
     "url": "https://nude-project.com/contact",
     "data": {
       "form_type": "customer",
-      "utf8": "\u00e2\u0153\u201c",
+      "utf8": "âœ“",
       "contact[tags]": "newsletter",
       "contact[email]": "{email}",
       "form_key": "dpuwi6ga47bdz7o46pithwm6miaq3eqt"
@@ -734,7 +734,7 @@
     "url": "https://unitednude.com/account",
     "data": {
       "form_type": "create_customer",
-      "utf8": "\u00e2\u0153\u201c",
+      "utf8": "âœ“",
       "customer[first_name]": "Great",
       "customer[last_name]": "Hound",
       "customer[email]": "{email}",
@@ -746,7 +746,7 @@
     "url": "https://semilac.co.uk/account",
     "data": {
       "form_type": "create_customer",
-      "utf8": "\u00e2\u0153\u201c",
+      "utf8": "âœ“",
       "customer[first_name]": "gay",
       "customer[last_name]": "poop",
       "customer[email]": "{email}",
@@ -823,14 +823,47 @@
       "UserLastname": "itout",
       "newsletter": "Y"
     }
-  
   },
-  "upcoming":{
-	  "url":"https://upcoming.nl/api/subscribe/esp",
-	  "json":{
-	"email": "{email}",
-	"isDirty": true,
-	"isValid": true
-}
+  "upcoming": {
+    "url": "https://upcoming.nl/api/subscribe/esp",
+    "json": {
+      "email": "{email}",
+      "isDirty": true,
+      "isValid": true
+    }
+  },
+  "software city (works but has big delay)": {
+    "url": "https://webflow.com/api/v1/form/637cea42f55f4c602965f7a4",
+    "data": {
+      "name": "Newsletter+Signup",
+      "pageId": "646f69d282334172e6e5670b",
+      "elementId": "2713e924-4ab4-2ada-6a0c-671725efa756",
+      "source": "https://www.sunderlandsoftwarecity.com/",
+      "test": "false",
+      "fields[First%20Name]": "adam",
+      "fields[Last%20Name]": "gay",
+      "fields[Email]": "{email}",
+      "fields[Consent]": "true",
+      "dolphin": "false"
+    }
+  },
+  "syntystore": {
+    "url": "https://syntystore.com/en-gb/account",
+    "data": {
+      "form_type": "create_customer",
+      "utf8": "✓",
+      "customer[first_name]": "adadada",
+      "customer[last_name]": "afasfsaf",
+      "customer[email]": "{email}",
+      "customer[password]": "{password}",
+      "login_with_shop[analytics_trace_id]": "8aeb28c8-65ba-40be-8a67-828b052ffb3f"
+    }
+  },
+  "clipchamp": {
+    "url": "https://app.clipchamp.com/v2/auth/email",
+    "json": {
+      "email": "{email}",
+      "locale": "en-US"
+    }
   }
 }
