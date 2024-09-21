@@ -104,11 +104,11 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
             cookies=cookies,
             timeout=timeout
         ) as resp:
-            status = resp.status
-            evaluation = "FAILURE" if status >= 400 else "SUCCESS"
-            resp = await resp.text()
-            resp = resp.strip().replace("\n", "").replace("\r", "").replace("\t", "")[:1000]
             if status_codes.get(name) is None:
+                status = resp.status
+                evaluation = "FAILURE" if status >= 400 else "SUCCESS"
+                resp = await resp.text()
+                resp = resp.strip().replace("\n", "").replace("\r", "").replace("\t", "")[:1000]
                 status_codes[name] = {
                     "method": method,
                     "status": status,
