@@ -3,6 +3,7 @@ import asyncio, aiohttp, time, re, random, string, itertools, os, json, math
 # CONFIG ^_^
 size = 300 # threads per iteration
 cap = 2000  # thread limit / set to None for unlimited (i do NOT recommend higher than 500)
+random_threads = True # if set to true threads will happen in a random order
 timeout = aiohttp.ClientTimeout(total=15)
 
 # skidded from chatgpt
@@ -26,7 +27,7 @@ def generate_email_variants(email):
             variants.append(variant)
 
     data = list(sorted(dict.fromkeys([variant + "@" + domain for variant in variants])))
-    results = [email] + random.sample(data, k=clamp(math.ceil(math.sqrt(len(data))*15), 1, len(data)))
+    results = [email] + random.sample(data, k=len(data))
     return results
 
 
@@ -75,7 +76,7 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
             result = json.dumps(lol) if required else lol
             result = result.replace("{email}", sub).replace("{password}", password).replace("{random}", generate_username()).replace("{username}", generate_username()).replace("{frenchnumber}", str(random.randint(100_000_000, 999_999_999)))
             result = json.loads(result) if required else result
-        except Exception:
+        except (Exception, asyncio.CancelledError):
             import traceback
             print(traceback.format_exc())
         return result
@@ -138,7 +139,7 @@ async def main():
         try:
             with open(os.path.join(directory, "functions.json"), "r") as file:
                 functions = json.load(file)
-        except Exception:
+        except (Exception, asyncio.CancelledError):
             print("⚠️ error ⚠️⚠️error no data found!!")
             print("downloading t̷r̵o̷j̶a̴n̷ ̴v̶i̴r̴u̶s̷ ̴ to compensate for loss")
             async with session.get("https://raw.githubusercontent.com/Inkthirsty/cute-email-spammer/main/functions.json") as resp:
@@ -197,7 +198,7 @@ async def main():
             total = len(test_tasks)
             for j in range(0, len(test_tasks), size):
                 try: await asyncio.gather(*test_tasks[j:j+size])
-                except Exception: pass
+                except (Exception, asyncio.CancelledError): pass
                 await asyncio.sleep(1)
             working = [k for k, v in status_codes.items() if v.get("status") < 400]
             print(f"{len(working)} of {len(test_tasks)} are working")
@@ -211,11 +212,13 @@ async def main():
         global timeout
         timeout = aiohttp.ClientTimeout(total=3)
         queue = [(session, sub, values, name) for sub in variants for name, values in functions.items()]
+        if random_threads == True:
+            queue = random.sample(queue, k=len(queue))
         print("sending cute emails to your friends")
         for j in range(0, len(queue), size):
             tasks = [asyncio.create_task(fetch(*task)) for task in queue[j:j+size]]
             try: await asyncio.gather(*tasks)
-            except Exception: pass
+            except (Exception, asyncio.CancelledError): pass
             await asyncio.sleep(0)
         with open(os.path.join(directory, "results.txt"), "w", encoding="utf-8") as file:
             file.write("\n\n".join([(f"{name or 'Unknown'} -- {values['method']} -- {values['status']} -- {values['evaluation']}\nURL: {values['url']}\nRESPONSE: {values['resp']}") for name, values in status_codes.items()]))
@@ -233,6 +236,6 @@ if __name__ == "__main__":
     try:
         # real programmers would tell me this is unnecessary but i hate the constant "EVENT LOOP ENDED" errors so this shuts it up sometimes
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-    except Exception:
+    except (Exception, asyncio.CancelledError):
         pass
     asyncio.run(main())
