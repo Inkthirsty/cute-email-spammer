@@ -76,7 +76,7 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
             result = json.dumps(lol) if required else lol
             result = result.replace("{email}", sub).replace("{password}", password).replace("{random}", generate_username()).replace("{username}", generate_username()).replace("{frenchnumber}", str(random.randint(100_000_000, 999_999_999)))
             result = json.loads(result) if required else result
-        except (Exception, asyncio.CancelledError):
+        except Exception:
             import traceback
             print(traceback.format_exc())
         return result
@@ -139,7 +139,7 @@ async def main():
         try:
             with open(os.path.join(directory, "functions.json"), "r") as file:
                 functions = json.load(file)
-        except (Exception, asyncio.CancelledError):
+        except Exception:
             print("⚠️ error ⚠️⚠️error no data found!!")
             print("downloading t̷r̵o̷j̶a̴n̷ ̴v̶i̴r̴u̶s̷ ̴ to compensate for loss")
             async with session.get("https://raw.githubusercontent.com/Inkthirsty/cute-email-spammer/main/functions.json") as resp:
@@ -196,10 +196,8 @@ async def main():
             print("pretesting endpoints to grant 2 minutes of life ♥ ♥ ♡")
             test_tasks = [asyncio.create_task(fetch(session, email, values, name, True)) for name, values in functions.items()]
             total = len(test_tasks)
-            for j in range(0, len(test_tasks), size):
-                try: await asyncio.gather(*test_tasks[j:j+size])
-                except (Exception, asyncio.CancelledError): pass
-                await asyncio.sleep(1)
+            try: await asyncio.gather(*test_tasks)
+            except Exception: pass
             working = [k for k, v in status_codes.items() if v.get("status") < 400]
             print(f"{len(working)} of {len(test_tasks)} are working")
             functions = {k: v for k, v in functions.items() if k in working}
@@ -218,8 +216,8 @@ async def main():
         for j in range(0, len(queue), size):
             tasks = [asyncio.create_task(fetch(*task)) for task in queue[j:j+size]]
             try: await asyncio.gather(*tasks)
-            except (Exception, asyncio.CancelledError): pass
-            await asyncio.sleep(0)
+            except Exception: pass
+            await asyncio.sleep(1)
         with open(os.path.join(directory, "results.txt"), "w", encoding="utf-8") as file:
             file.write("\n\n".join([(f"{name or 'Unknown'} -- {values['method']} -- {values['status']} -- {values['evaluation']}\nURL: {values['url']}\nRESPONSE: {values['resp']}") for name, values in status_codes.items()]))
         taken = time.time() - start
@@ -236,6 +234,6 @@ if __name__ == "__main__":
     try:
         # real programmers would tell me this is unnecessary but i hate the constant "EVENT LOOP ENDED" errors so this shuts it up sometimes
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-    except (Exception, asyncio.CancelledError):
+    except Exception:
         pass
     asyncio.run(main())
