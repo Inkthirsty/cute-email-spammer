@@ -1,7 +1,7 @@
 import asyncio, aiohttp, time, re, random, string, itertools, os, json, math
 
 # CONFIG ^_^
-size = 300 # threads per iteration
+size = 500 # threads per iteration
 cap = 2000  # thread limit / set to None for unlimited (i do NOT recommend higher than 500)
 random_threads = True # if set to true threads will happen in a random order
 timeout = aiohttp.ClientTimeout(total=15)
@@ -167,7 +167,7 @@ async def main():
                 limit = clamp(len(variants), 1, cap or float("inf"))
                 threads = input(f"threads per batch (1-{limit}): ")
                 if threads == "":
-                    threads = 500
+                    threads = cap//2
                 threads = clamp(int(threads), 1, limit)
                 break
             except:
@@ -199,7 +199,7 @@ async def main():
             try: await asyncio.gather(*test_tasks)
             except Exception: pass
             working = [k for k, v in status_codes.items() if v.get("status") < 400]
-            print(f"{len(working)} of {len(test_tasks)} are working")
+            print(f"{len(working)} of {len(test_tasks)} endpoints may be working")
             functions = {k: v for k, v in functions.items() if k in working}
             variants = variants[1:]
             print(f"{len(test_tasks):,} endpoints have been tested -- {round((len(functions)/len(test_tasks))*100, 1):.1f}% success rate")
