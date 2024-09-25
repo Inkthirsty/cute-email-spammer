@@ -1,36 +1,44 @@
 # cute-email-spammer
 
-tldr: this is some script that signs up the entered email for random services. this wasnt a serious project so its not very fast or well presented but if you for some reason need to use this then enjoy...
+summary: this is a script that signs up the entered email for random services. this wasnt a serious project so its not very fast or well presented but if you for some reason need to use this then enjoy...
 
-if you want some easy throwaway emails
+if you want to make a better version feel free to use anything from here (you know who you are, i live in your head rent free)
 
-https://mail.tm/en/
+![image](https://github.com/user-attachments/assets/851d8fda-7888-4d3e-a429-bb55a3c87e93)
 
-https://mail.gw/en/
-
-https://temp-mail.io/en
+if you want some throwaway emails to test this with here
+- https://mail.tm/en/
+- https://mail.gw/en/
+- https://temp-mail.io/en
+- https://tempmailo.com/
 
 ## how to use
 1. pip install aiohttp
 2. run the script
-3. paste email
+3. paste any email
 4. let it do its magic
 5. enjoy ^_^
-   
-![image](https://github.com/user-attachments/assets/851d8fda-7888-4d3e-a429-bb55a3c87e93)
 
 ## info
-- if you for some reason need to flood people's inboxes please only use it on bad people
-- this is just some shitty email spammer script i made
+- intentionally slow because python is shit and i dont know any other programming languages
 - u can flood inboxes of people u don't like
-- i didn't bother with optimisation so ur gonna have to be patient
+- i didn't bother with optimisation
 - around 70% success rate (some apis might have changed how they work because of me lol)
 - i live in the uk so some apis may not work for you
+- sometimes you get an "assertion error" and I have no idea how to prevent it (possibly occurs due to excessive async usage) but you can lower the thread limit if it happens
+- i don't plan to update this often but if i find sites i may expand it
 
 ## extra info
-- if you want to "debug" which sites do and do not work, set threads to 1 and a file named "results.txt" will record all responses
-- please let me know what websites consistently don't work
-- please also give me site recommendations because i found half of these random sites by googling "... shop"
+- if you want to "debug" which sites do and do not work, set threads to 1
+- a file named "results.txt" will record all responses
+- let me know if any websites no longer work
+- you can give me site recommendations using [discussions](https://github.com/Inkthirsty/cute-email-spammer/discussions) or something
+- i found half of these random sites by googling "... shop" or using a vpn to search for sites in different countries
+
+## people i want to thank for making this slightly better
+- gacekkosmatek - didn't directly contribute to this but caused my async addiction
+- wv8 - helping me optimise this + giving me motivation to work on it + telling me to add a timeout
+- chelpus - making a faster generate function
 
 ## examples
 ### here's the aftermath of 1 thread
@@ -42,6 +50,5 @@ https://temp-mail.io/en
 ![image](https://github.com/user-attachments/assets/c97b3396-09bb-4e89-a8d9-98e9e42efba4)
 
 ### here's the aftermath of 1000 threads after 24 hours
-(i flooded my own inbox for this)
 ![image](https://github.com/user-attachments/assets/cd3b0917-91db-4838-b9b4-9415f78d9234)
 
