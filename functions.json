@@ -662,7 +662,8 @@
       "viewMode": "Site"
     }
   },
-  "farmfoods (throwaway prevention)": {
+  "farmfoods": {
+    "note": "only works with trusted emails like gmail, hotmail, yahoo, etc",
     "url": "https://www.farmfoods.co.uk/includes/mailing_list/join-club.php",
     "data": {
       "email_address": "{email}",
@@ -865,5 +866,182 @@
       "email": "{email}",
       "locale": "en-US"
     }
+  },
+  "world of books": {
+    "url": "https://www.worldofbooks.com/en-gb/account",
+    "data": {
+      "form_type": "create_customer",
+      "utf8": "✓",
+      "customer[first_name]": "ffffff",
+      "customer[last_name]": "ggggggg",
+      "customer[email]": "{email}",
+      "customer[password]": "{password}",
+      "customer[accepts_marketing]": [
+        "false",
+        "on"
+      ],
+      "accepts-terms": "on"
+    }
+  },
+  "yell": {
+    "url": "https://login.yell.com/dbconnections/signup",
+    "json": {
+      "client_id": "OgiDK4Rr7lovV0E6iWCKRVjpWQFv8qY9",
+      "connection": "CAS-DB",
+      "email": "{email}",
+      "password": "{password}",
+      "state": "hKFo2SBfVnNaM1RYN2xpbU1vNXJMOS1EYlFWa2dPRG40ZHVOMaFupWxvZ2luo3RpZNkgcnBqZDV6d1M0eGd3VmVmeXQyZHR3QklFN2g3UTRUM2-jY2lk2SBPZ2lESzRScjdsb3ZWMEU2aVdDS1JWanBXUUZ2OHFZOQ",
+      "user_metadata": {
+        "first_name": "eeeee",
+        "last_name": "gggggg",
+        "receive_marketing": "true"
+      }
+    }
+  },
+  "email your future self": {
+    "note": "not only will they receive an email now but they will also receive one 10 years later XD.. wait 2029 is closer than that wtf",
+    "url": "https://www.emailyourfutureself.com/email",
+    "data": {
+      "note": "remember+to+drink+water",
+      "email": "{email}",
+      "name": "Pisser",
+      "send_at": "2029-01-01"
+    }
+  },
+  "ironvest": {
+    "url": "https://api.ironvest.com/v1/user/verifyEmail",
+    "json": {
+      "browser": "Firefox",
+      "deviceId": "9BAE1BB2DDEE4D9289F2A0372A87314D",
+      "email": "{email}",
+      "firstName": "",
+      "product": "Webapp",
+      "tag": "webapp",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0",
+      "version": "web-8.2.1223"
+    }
+  },
+  "trashmail": {
+    "note": "the email includes your ip address so if ur paranoid then use a vpn",
+    "url": "https://trashmail.com/?api=1&cmd=register_account&lang=en",
+    "json": {
+      "email": "{email}",
+      "newsletter": true,
+      "pass": "{password}",
+      "pass-cfrm": "{password}",
+      "user": "{username}"
+    }
+  },
+  "tefl": {
+    "url": "https://www.tefl.org/.netlify/functions/register",
+    "json": {
+      "country": "GB",
+      "dateOfBirth": null,
+      "email": "{email}",
+      "firstname": "aaa",
+      "lastname": "bbbbbbb",
+      "line1": null,
+      "line2": null,
+      "password": "{password}",
+      "postcode": null,
+      "region": null,
+      "title": null,
+      "town": null
+    }
+  },
+  "barnowltrust": {
+    "url": "https://www.barnowltrust.org.uk/shop/my-account/",
+    "data": {
+      "email": "{email}",
+      "password": "{password}",
+      "wc_order_attribution_source_type": "organic",
+      "wc_order_attribution_referrer": "https://www.google.com/",
+      "wc_order_attribution_utm_campaign": "(none)",
+      "wc_order_attribution_utm_source": "google",
+      "wc_order_attribution_utm_medium": "organic",
+      "wc_order_attribution_utm_content": "(none)",
+      "wc_order_attribution_utm_id": "(none)",
+      "wc_order_attribution_utm_term": "(none)",
+      "wc_order_attribution_utm_source_platform": "(none)",
+      "wc_order_attribution_utm_creative_format": "(none)",
+      "wc_order_attribution_utm_marketing_tactic": "(none)",
+      "wc_order_attribution_session_entry": "https://www.barnowltrust.org.uk/",
+      "wc_order_attribution_session_start_time": "2024-09-25+15:11:10",
+      "wc_order_attribution_session_pages": "2",
+      "wc_order_attribution_session_count": "1",
+      "wc_order_attribution_user_agent": "Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64;+rv:130.0)+Gecko/20100101+Firefox/130.0",
+      "woocommerce-register-nonce": "a24d3959d1",
+      "_wp_http_referer": "/shop/my-account/",
+      "register": "Register"
+    }
+  },
+  "ilcentres": {
+    "url": "https://smtpjs.com/v3/smtpjs.aspx?",
+    "data": {
+      "{\"SecureToken\":\"75acbe6e-3900-45cb-b428-502465ba7aa4\",\"To\":\"{email}\",\"From\":\"webapplication@ilcentres.com\",\"Subject\":\"Message Sent ILC\",\"Body\":\"Hey aaaaa! We will get back to you within 48 hours.\",\"nocache\":505489,\"Action\":\"Send\"}": ""
+    }
+  },
+  "solgar": {
+    "url": "https://solgar.co.uk/account",
+    "data": {
+      "form_type": "create_customer",
+      "utf8": "✓",
+      "customer[first_name]": "aaaaaaaa",
+      "customer[last_name]": "ffffffff",
+      "customer[email]": "{email}",
+      "customer[password]": "{password}",
+      "login_with_shop[analytics_trace_id]": "96bcd524-35c2-4a38-b46b-be090437476e"
+    }
+  },
+  "avogel": {
+    "url": "https://www.avogel.co.uk/my-avogel/",
+    "data": {
+      "__usedField[]": [
+        "Username",
+        "Password",
+        "Password2"
+      ],
+      "s[Username]": "{email}",
+      "s[Password]": "{password}",
+      "s[Password2]": "{password}",
+      "register": "",
+      "s[MyAVogel_User]": "1"
+    }
+  },
+  "firehouse subs": {
+    "note": "works, just super delayed",
+    "url": "https://use1-prod-fhs-gateway.rbictg.com/graphql",
+    "json": {
+      "operationName": "SignUp",
+      "query": "mutation SignUp($input: SignUpUserInput!) {\n  signUp(userInfo: $input)\n}\n",
+      "variables": {
+        "input": {
+          "country": "USA",
+          "dob": "",
+          "name": "ff",
+          "phoneNumber": "+12312341234",
+          "platform": "web",
+          "stage": "prod",
+          "userName": "{email}",
+          "wantsPromotionalEmails": true,
+          "zipcode": ""
+        }
+      }
+    }
+  },
+  "part two": {
+    "url": "https://notification.parttwo.com/api/v1.0/Notification/CreateNewLead",
+	"json":{
+		"country": "EU",
+		"email": "{email}",
+		"firstName": "ddddd",
+		"gender": "1",
+		"lastName": "hhhhhhhhhhhh",
+		"marketingSource": 1
+	}
+  },
+  "example": {
+    "note": "this is just a template dont worry",
+    "url": "https://example.com"
   }
 }
