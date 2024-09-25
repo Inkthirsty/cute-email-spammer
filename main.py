@@ -126,7 +126,7 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
                     "url": url,
                     "resp": resp
                 }
-    except Exception:
+    except (Exception, asyncio.CancelledError, AssertionError):
         pass
     return update_progress()
     
