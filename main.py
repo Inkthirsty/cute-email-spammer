@@ -114,7 +114,9 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
                 resp = await resp.text()
                 evaluation = "FAILURE" if status >= 400 else "SUCCESS"
                 if is_html_string(resp):
-                    if "denied" in evaluation.lower():
+                    words = ["denied", "error", "bad request", "bad", "wrong", "forbidden"]
+                    print([f"{word} {word.lower() in resp.lower()}" for word in words])
+                    if any([word in evaluation.lower() for word in words]):
                         evaluation = "FAILURE"
                         status = 400
                 resp = resp.strip().replace("\n", "").replace("\r", "").replace("\t", "")[:1000]
@@ -125,7 +127,7 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
                     "url": url,
                     "resp": resp
                 }
-    except (Exception, asyncio.TimeoutError):
+    except Exception:
         pass
     return update_progress()
     

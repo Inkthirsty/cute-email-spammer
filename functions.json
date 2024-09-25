@@ -19,7 +19,8 @@
       "impactPartnerToken": null
     }
   },
-  "bbc news (sends 2 emails)": {
+  "bbc news": {
+    "note": "sends 2 emails: verify and a reminder",
     "url": "https://account.bbc.com/auth/v2/register?ab=o13&action=register&clientId=Account&isCasso=false&lang=en-GB&nonce=byboJgSb-4O3GvcZHwj2AdTgy18S6QeXX0MY&ptrt=https%3A%2F%2Fwww.bbc.co.uk%2F&realm=%2F&redirectUri=https%3A%2F%2Fsession.bbc.co.uk%2Fsession%2Fcallback%3Frealm%3D%2F&sequenceId=fba4af75-c4d5-453d-8a9a-3151e4626c9b&service=IdSignInService",
     "json": {
       "location": "gb",
@@ -64,7 +65,8 @@
       "confirmpassword": "{password}"
     }
   },
-  "goodfood (often sends reminders)": {
+  "goodfood": {
+    "note": "likes to spam every few days",
     "url": "https://www.bbcgoodfood.com/api/pages/forms/newsletter-signup",
     "data": {
       "newsletter": "nl_bbcgf_health--850",
@@ -833,7 +835,8 @@
       "isValid": true
     }
   },
-  "software city (works but has big delay)": {
+  "software city": {
+    "note": "works but has long delay",
     "url": "https://webflow.com/api/v1/form/637cea42f55f4c602965f7a4",
     "data": {
       "name": "Newsletter+Signup",
@@ -1031,14 +1034,73 @@
   },
   "part two": {
     "url": "https://notification.parttwo.com/api/v1.0/Notification/CreateNewLead",
-	"json":{
-		"country": "EU",
-		"email": "{email}",
-		"firstName": "ddddd",
-		"gender": "1",
-		"lastName": "hhhhhhhhhhhh",
-		"marketingSource": 1
-	}
+    "json": {
+      "country": "EU",
+      "email": "{email}",
+      "firstName": "ddddd",
+      "gender": "1",
+      "lastName": "hhhhhhhhhhhh",
+      "marketingSource": 1
+    }
+  },
+  "mylands": {
+    "url": "https://manage.kmail-lists.com/subscriptions/subscribe?g=VZXxnF",
+    "data": {
+      "$email": "{email}",
+      "$first_name": "aaaaa",
+      "$last_name": "gggggggg"
+    }
+  },
+  "classic hymers": {
+    "note": "sometimes delay but sends eventually",
+    "url": "https://classichymers.co.uk/my-account/",
+    "data": {
+      "email": "{email}",
+      "wc_order_attribution_source_type": "organic",
+      "wc_order_attribution_referrer": "https://www.google.com/",
+      "wc_order_attribution_utm_campaign": "(none)",
+      "wc_order_attribution_utm_source": "google",
+      "wc_order_attribution_utm_medium": "organic",
+      "wc_order_attribution_utm_content": "(none)",
+      "wc_order_attribution_utm_id": "(none)",
+      "wc_order_attribution_utm_term": "(none)",
+      "wc_order_attribution_session_entry": "https://classichymers.co.uk/t-shirt-shop/blueprint-A5bdf388be447427a4cba944b?productType=812&sellable=QzbreGrjqzsNx2R8MB7e-812-7&appearance=2",
+      "wc_order_attribution_session_start_time": "2024-09-25+18:05:27",
+      "wc_order_attribution_session_pages": "2",
+      "wc_order_attribution_session_count": "2",
+      "wc_order_attribution_user_agent": "Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64;+rv:130.0)+Gecko/20100101+Firefox/130.0",
+      "woocommerce-register-nonce": "063513d579",
+      "im not a nonce": ":(",
+      "_wp_http_referer": "/my-account/",
+      "register": "Register"
+    }
+  },
+  "seabirds ltd": {
+    "url": "https://api.ekmresponse.com/api/recipient/signup",
+    "data": {
+      "Email": "{email}",
+      "UserID": "17499",
+      "GroupID": "46598",
+      "Hash2": "a823e4017a1963bf027651050f44a7bf"
+    }
+  },
+  "enfield council": {
+    "url": "https://enfield-council.msgfocus.com/k/Enfield-Council/sign_up",
+    "data": {
+      "email_22": "{email}",
+      "submit": "Submit"
+    }
+  },
+  "justgeek": {
+    "url": "https://www.justgeek.com/account",
+    "data": {
+      "form_type": "create_customer",
+      "utf8": "✓",
+      "customer[first_name]": "gggg",
+      "customer[last_name]": "hhhhhhhh",
+      "customer[email]": "{email}",
+      "customer[password]": "{password}"
+    }
   },
   "example": {
     "note": "this is just a template dont worry",
