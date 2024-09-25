@@ -115,7 +115,6 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
                 evaluation = "FAILURE" if status >= 400 else "SUCCESS"
                 if is_html_string(resp):
                     words = ["denied", "error", "bad request", "bad", "wrong", "forbidden"]
-                    print([f"{word} {word.lower() in resp.lower()}" for word in words])
                     if any([word in evaluation.lower() for word in words]):
                         evaluation = "FAILURE"
                         status = 400
