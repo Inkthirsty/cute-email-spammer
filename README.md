@@ -19,6 +19,8 @@ if you want some throwaway emails to test this with here
 4. let it do its magic
 5. enjoy ^_^
 
+alternatively you can paste main.py into this site and it might work https://trinket.io/python3
+
 ## info
 - intentionally slow because python is shit and i dont know any other programming languages
 - u can flood inboxes of people u don't like
