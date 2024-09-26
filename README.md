@@ -4,7 +4,11 @@ summary: this is a script that signs up the entered email for random services. t
 
 if you want to make a better version feel free to use anything from here (you know who you are, i live in your head rent free)
 
-![image](https://github.com/user-attachments/assets/851d8fda-7888-4d3e-a429-bb55a3c87e93)
+![image](https://github.com/user-attachments/assets/df0e2d68-5838-4937-9469-d5cc9c490e06)
+
+![image](https://github.com/user-attachments/assets/6e21cb55-8133-45c6-b3c6-60e3356d6a6d)
+
+https://github.com/user-attachments/assets/c98d32ed-8b36-4cc9-a234-8df8f17f8020
 
 if you want some throwaway emails to test this with here
 - https://mail.tm/en/
@@ -41,16 +45,4 @@ alternatively you can paste main.py into this site and it might work https://tri
 - gacekkosmatek - didn't directly contribute to this but caused my async addiction
 - wv8 - helping me optimise this + giving me motivation to work on it + telling me to add a timeout
 - chelpus - making a faster generate function
-
-## examples
-### here's the aftermath of 1 thread
-![image](https://github.com/user-attachments/assets/03d0e1b6-2827-432e-a452-c0f1cfaa6504)
-![image](https://github.com/user-attachments/assets/ea83f063-3fbf-453d-a9f2-d26e1cf402dc)
-
-### here's the instant aftermath of 1000 threads
-![image](https://github.com/user-attachments/assets/dc260e03-2b79-4ac6-99ff-ae86642ae487)
-![image](https://github.com/user-attachments/assets/c97b3396-09bb-4e89-a8d9-98e9e42efba4)
-
-### here's the aftermath of 1000 threads after 24 hours
-![image](https://github.com/user-attachments/assets/cd3b0917-91db-4838-b9b4-9415f78d9234)
 
