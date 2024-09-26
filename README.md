@@ -10,7 +10,7 @@ if you want to make a better version feel free to use anything from here (you kn
 
 tw// good music
 
-https://github.com/user-attachments/assets/c98d32ed-8b36-4cc9-a234-8df8f17f8020
+https://r2.e-z.host/3f442927-15b4-47e5-8833-2160854b6647/vssrq2nz.mp4
 
 if you want some throwaway emails to test this with here
 - https://mail.tm/en/
