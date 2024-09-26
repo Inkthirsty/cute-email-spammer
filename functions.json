@@ -1102,6 +1102,42 @@
       "customer[password]": "{password}"
     }
   },
+  "onepagelove": {
+    "url": "https://assets.mailerlite.com/jsonp/329724/forms/101631485514089599/subscribe",
+    "params": {
+      "callback": "jQuery18307765256266183702_1727373695399",
+      "fields[email]": "{email}",
+      "ml-submit": "1",
+      "anticsrf": "true",
+      "ajax": "1",
+      "guid": "40cd1442-229c-5cbe-409a-7f7252ba24c4",
+      "_": "{timestamp}"
+    }
+  },
+  "cnet": {
+    "url": "https://login.cnet.com/dbconnections/signup",
+    "json": {
+      "client_id": "6kopmG6cro0U8IegelHewQXqyABV5uxH",
+      "connection": "Username-Password-Authentication",
+      "email": "{email}",
+      "password": "{password}"
+    }
+  },
+  "jo cooks": {
+    "note": "WHO THE FUCK IS JOE.. sorry",
+    "url": "https://jocooks.us10.list-manage.com/subscribe/post-json",
+    "params": {
+      "u": "5ba57158846b6743ab030d3cb",
+      "id": "aba32560a5",
+      "f_id": "0027cbe1f0",
+      "c": "jQuery19009157912783843248_1727375939161",
+      "FNAME": "aaaaaaaaaa",
+      "EMAIL": "{email}",
+      "b_5ba57158846b6743ab030d3cb_aba32560a5": "",
+      "subscribe": "Join Now!",
+      "_": "{timestamp}"
+    }
+  },
   "example": {
     "note": "this is just a template dont worry",
     "url": "https://example.com"

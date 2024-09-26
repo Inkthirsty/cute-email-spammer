@@ -79,7 +79,13 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
         try:
             required = isinstance(lol, (dict, tuple, list))
             result = json.dumps(lol) if required else lol
-            result = result.replace("{email}", sub).replace("{password}", password).replace("{random}", generate()).replace("{username}", generate()).replace("{frenchnumber}", str(random.randint(100_000_000, 999_999_999)))
+            result = result.replace("{email}", sub
+                    ).replace("{password}", password
+                    ).replace("{random}", generate()
+                    ).replace("{username}", generate()
+                    ).replace("{frenchnumber}", str(random.randint(100_000_000, 999_999_999)
+                    ).replace("{timestamp}", str(int(time.time())))
+            )
             result = json.loads(result) if required else result
         except Exception:
             import traceback
