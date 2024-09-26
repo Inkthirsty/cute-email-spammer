@@ -1114,6 +1114,18 @@
       "_": "{timestamp}"
     }
   },
+  "scribble together": {
+    "note": "super fucking delayed but sends after like an hour",
+    "url": "https://scribbletogether.com/api/profile/register",
+    "json": {
+      "user": {
+        "email": "{email}",
+        "emailSubscription": true,
+        "name": "{username}",
+        "termsConditions": true
+      }
+    }
+  },
   "cnet": {
     "url": "https://login.cnet.com/dbconnections/signup",
     "json": {
@@ -1136,6 +1148,74 @@
       "b_5ba57158846b6743ab030d3cb_aba32560a5": "",
       "subscribe": "Join Now!",
       "_": "{timestamp}"
+    }
+  },
+  "everplans": {
+    "url": "https://my.everplans.com/api/v1/users",
+    "json": {
+      "agreementAccepted": true,
+      "email": "{email}",
+      "ep_ref_data": "{\"ep_ref\":\"\"}",
+      "password": "{password}",
+      "password_confirmation": "{password}",
+      "sign_up_medium": "web standard signup"
+    }
+  },
+  "webby awards": {
+    "url": "https://api.recogmedia.net/api/Account/Register",
+    "json": {
+      "AppTypeID": 1,
+      "ConfirmPassword": "{password}",
+      "Email": "{email}",
+      "FirstName": "Dog",
+      "LastName": "Cat",
+      "Organization": "Dog food",
+      "OrganizationUrl": "https://dogtime.com",
+      "Password": "{password}",
+      "PropertyID": 1,
+      "ProvidedConsent": true,
+      "Title": "Master Baiter"
+    }
+  },
+  "buzzard reptile": {
+    "url": "https://buzzardreptile.co.uk/",
+    "data": {
+      "email": "{email}",
+      "password": "{password}",
+      "wc_order_attribution_source_type": "organic",
+      "wc_order_attribution_referrer": "https://www.google.com/",
+      "wc_order_attribution_utm_campaign": "(none)",
+      "wc_order_attribution_utm_source": "google",
+      "wc_order_attribution_utm_medium": "organic",
+      "wc_order_attribution_utm_content": "(none)",
+      "wc_order_attribution_utm_id": "(none)",
+      "wc_order_attribution_utm_term": "(none)",
+      "wc_order_attribution_utm_source_platform": "(none)",
+      "wc_order_attribution_utm_creative_format": "(none)",
+      "wc_order_attribution_utm_marketing_tactic": "(none)",
+      "wc_order_attribution_session_entry": "https://buzzardreptile.co.uk/",
+      "wc_order_attribution_session_start_time": "2024-09-26+19:43:40",
+      "wc_order_attribution_session_pages": "1",
+      "wc_order_attribution_session_count": "1",
+      "wc_order_attribution_user_agent": "Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64;+rv:130.0)+Gecko/20100101+Firefox/130.0",
+      "automatewoo_optin": "on",
+      "woocommerce-register-nonce": "6ba42568c4",
+      "_wp_http_referer": "/",
+      "register": "Register"
+    }
+  },
+  "mykeeper": {
+    "url": "https://api.prod.keeper.memorial/v1/auth/user/signup",
+    "json": {
+      "main": {
+        "email": "{email}",
+        "first_name": "aaaaaaaaa",
+        "gender": "O",
+        "last_name": "aaaaaaaaaaaaaaaa",
+        "password": "{password}"
+      },
+      "org_uuid": null,
+      "signup_type": "self"
     }
   },
   "example": {
