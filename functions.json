@@ -1218,6 +1218,81 @@
       "signup_type": "self"
     }
   },
+  "wyse london": {
+    "url": "https://www.wyselondon.com/account",
+    "data": {
+      "form_type": "create_customer",
+      "utf8": "✓",
+      "return_to": [
+        "/account",
+        "/account"
+      ],
+      "customer[first_name]": "aaaaaaaaa",
+      "customer[last_name]": "wegeerffffffffds",
+      "customer[email]": "{email}",
+      "customer[note][birthday]": "1966-08-01",
+      "customer[password]": "{password}",
+      "login_with_shop[analytics_trace_id]": "3c5742f7-c2f7-43a7-a6cd-2c1c5e565822"
+    }
+  },
+  "women's health magazine": {
+    "note": "for women ^_^",
+    "url": "https://preferencecenter.hearstmags.com/api/preference/signup",
+    "json": {
+      "analyticString1": "",
+      "analyticString2": "",
+      "email": "{email}",
+      "majorSource": "WNL",
+      "minorSource": "MODAL",
+      "preferences": [
+        {
+          "optinValue": "H",
+          "preferenceId": "972F2D27-B3B8-4F75-9227-7EFAAF2E9AF2"
+        }
+      ],
+      "sendToEsp": true
+    },
+    "headers": {
+      "Host": "preferencecenter.hearstmags.com",
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0",
+      "Accept": "*/*",
+      "Origin": "https://www.womenshealthmag.com",
+      "Connection": "keep-alive",
+      "Sec-Fetch-Dest": "empty",
+      "Sec-Fetch-Mode": "no-cors",
+      "Sec-Fetch-Site": "cross-site",
+      "Content-Type": "application/json",
+      "Referer": "https://www.womenshealthmag.com/"
+    }
+  },
+  "men's health magazine": {
+    "note": "for men ^_^",
+    "url": "https://preferencecenter.hearstmags.com/api/preference/signup",
+    "json": {
+      "email": "{email}",
+      "majorSource": "NOSTO",
+      "minorSource": "Module",
+      "preferences": [
+        {
+          "optinValue": "H",
+          "preferenceId": "986687B1-D945-4F70-BE66-21B22779D75D"
+        }
+      ],
+      "sendToEsp": true
+    },
+    "headers": {
+      "Host": "preferencecenter.hearstmags.com",
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0",
+      "Accept": "*/*",
+      "Origin": "https://www.womenshealthmag.com",
+      "Connection": "keep-alive",
+      "Sec-Fetch-Dest": "empty",
+      "Sec-Fetch-Mode": "no-cors",
+      "Sec-Fetch-Site": "cross-site",
+      "Content-Type": "application/json",
+      "Referer": "https://membership.menshealth.com/"
+    }
+  },
   "example": {
     "note": "this is just a template dont worry",
     "url": "https://example.com"
