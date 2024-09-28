@@ -1293,6 +1293,18 @@
       "Referer": "https://membership.menshealth.com/"
     }
   },
+  "genius": {
+    "url": "https://genius.com/api/users",
+    "json": {
+      "text_format": "html,markdown",
+      "user": {
+        "device_fingerprint": "errored-react",
+        "email": "{email}",
+        "login": "{username}",
+        "password": "{password}"
+      }
+    }
+  },
   "example": {
     "note": "this is just a template dont worry",
     "url": "https://example.com"
