@@ -2,7 +2,7 @@
 
 summary: this is a script that signs up the entered email for random services. this wasnt a serious project so its not very fast or well presented but if you for some reason need to use this then enjoy...
 
-if you want to make a better version feel free to use anything from here (you know who you are, i live in your head rent free)
+if you want to make a better version feel free to use anything from here (you know who you are, but i refuse you name you since i live in your head rent free)
 
 ![image](https://github.com/user-attachments/assets/df0e2d68-5838-4937-9469-d5cc9c490e06)
 
