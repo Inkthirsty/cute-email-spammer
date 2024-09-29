@@ -25,7 +25,7 @@ if you want some throwaway emails to test this with here
 4. let it do its magic
 5. enjoy ^_^
 
-alternatively you can paste main.py into this site and it might work https://trinket.io/python3
+alternatively you can paste main.py into a site like trinket and it might work for a little bit but break cuz browser go kaboom
 
 ## info
 - intentionally slow because python is shit and i dont know any other programming languages
@@ -35,8 +35,6 @@ alternatively you can paste main.py into this site and it might work https://tri
 - i live in the uk so some apis may not work for you
 - sometimes you get an "assertion error" and I have no idea how to prevent it (possibly occurs due to excessive async usage) but you can lower the thread limit if it happens
 - i don't plan to update this often but if i find sites i may expand it
-
-## extra info
 - if you want to "debug" which sites do and do not work, set threads to 1
 - a file named "results.txt" will record all responses
 - let me know if any websites no longer work
@@ -44,7 +42,7 @@ alternatively you can paste main.py into this site and it might work https://tri
 - i found half of these random sites by googling "... shop" or using a vpn to search for sites in different countries
 
 ## people i want to thank for making this slightly better
-- gacekkosmatek - didn't directly contribute to this but caused my async addiction
+- gacekkosmatek - didnt directly contribute, but caused my async & try addiction
 - wv8 - helping me optimise this + giving me motivation to work on it + telling me to add a timeout
-- chelpus - making a faster generate function
+- chelpus - giving feedback + giving me a fast generate function 
 
