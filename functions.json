@@ -1313,6 +1313,18 @@
       "email": "{email}"
     }
   },
+  "mang inasal": {
+    "note": "sends 2 emails",
+    "url": "https://jollibee-ap.appspot.com/api/v1/menu/member.json",
+    "data": {
+      "verify": "before",
+      "type": "email",
+      "brandId": "4806394001752064",
+      "crmId": "4806394001752064",
+      "email": "{email}",
+      "locale": "en"
+    }
+  },
   "example": {
     "note": "this is just a template dont worry",
     "url": "https://example.com"
