@@ -1305,6 +1305,14 @@
       }
     }
   },
+  "electric heating company": {
+    "url": "https://www.electric-heatingcompany.co.uk/wp-admin/admin-ajax.php",
+    "data": {
+      "action": "newsletter",
+      "nonce": "107fa606eb",
+      "email": "{email}"
+    }
+  },
   "example": {
     "note": "this is just a template dont worry",
     "url": "https://example.com"
