@@ -1325,6 +1325,120 @@
       "locale": "en"
     }
   },
+  "donatello": {
+    "note": "sends 2 emails",
+    "url": "https://donatellotr.com/en/registration/",
+    "data": {
+      "email": "{email}",
+      "password": "{password}",
+      "wc_order_attribution_source_type": "typein",
+      "wc_order_attribution_referrer": "(none)",
+      "wc_order_attribution_utm_campaign": "(none)",
+      "wc_order_attribution_utm_source": "(direct)",
+      "wc_order_attribution_utm_medium": "(none)",
+      "wc_order_attribution_utm_content": "(none)",
+      "wc_order_attribution_utm_id": "(none)",
+      "wc_order_attribution_utm_term": "(none)",
+      "wc_order_attribution_session_entry": "https://donatellotr.com/en/product/gomlek-kamel-g00038/",
+      "wc_order_attribution_session_start_time": "2024-10-01+21:32:44",
+      "wc_order_attribution_session_pages": "3",
+      "wc_order_attribution_session_count": "1",
+      "wc_order_attribution_user_agent": "Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64;+rv:131.0)+Gecko/20100101+Firefox/131.0",
+      "woocommerce-register-nonce": "631dcd5508",
+      "_wp_http_referer": "/en/registration/",
+      "register": "Register"
+    }
+  },
+  "donna fashion": {
+    "note": "unique subject = no stack ^_^",
+    "url": "https://api.flashy.app/thunder/contact?overwrite=true&primary_key=email",
+    "json": {
+      "account_id": 8440,
+      "contact": {
+        "birthday": "978307200",
+        "email": "{email}",
+        "first_name": "{random}",
+        "flsid": null,
+        "lists": {
+          "22893": true
+        },
+        "popup_id": 33742
+      }
+    }
+  },
+  "ruby woo boutique": {
+    "note": "idk what triggers it but it has a chance to send an ad",
+    "url": "https://www.rubywooboutique.com/",
+    "data": {
+      "email": "{email}",
+      "mailchimp_woocommerce_newsletter": "1",
+      "wc_order_attribution_source_type": "organic",
+      "wc_order_attribution_referrer": "https://www.google.com/",
+      "wc_order_attribution_utm_campaign": "(none)",
+      "wc_order_attribution_utm_source": "google",
+      "wc_order_attribution_utm_medium": "organic",
+      "wc_order_attribution_utm_content": "(none)",
+      "wc_order_attribution_utm_id": "(none)",
+      "wc_order_attribution_utm_term": "(none)",
+      "wc_order_attribution_utm_source_platform": "(none)",
+      "wc_order_attribution_utm_creative_format": "(none)",
+      "wc_order_attribution_utm_marketing_tactic": "(none)",
+      "wc_order_attribution_session_entry": "https://www.rubywooboutique.com/",
+      "wc_order_attribution_session_start_time": "2024-10-01+22:05:41",
+      "wc_order_attribution_session_pages": "1",
+      "wc_order_attribution_session_count": "1",
+      "wc_order_attribution_user_agent": "Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64;+rv:131.0)+Gecko/20100101+Firefox/131.0",
+      "woocommerce-register-nonce": "9fda3136e4",
+      "_wp_http_referer": "/",
+      "register": "Register",
+      "ak_bib": "1727820434256",
+      "ak_bfs": "1727820434869",
+      "ak_bkpc": "1",
+      "ak_bkp": "108;",
+      "ak_bmc": "107;128,4108;81,491;",
+      "ak_bmcc": "3",
+      "ak_bmk": "",
+      "ak_bck": "",
+      "ak_bmmc": "2",
+      "ak_btmc": "0",
+      "ak_bsc": "0",
+      "ak_bte": "",
+      "ak_btec": "0",
+      "ak_bmm": "1110,531;4754,570;"
+    }
+  },
+  "pink boutique": {
+    "note": "this website is so fucking slow i do not recommend visiting, at least the api works",
+    "url": "https://www.pinkboutique.co.uk/account",
+    "data": {
+      "form_type": "create_customer",
+      "utf8": "✓",
+      "customer[first_name]": "aaaaaa",
+      "customer[last_name]": "ggsdag",
+      "customer[note][Birthday]": "03/04/1979",
+      "customer[note][Dress+Size]": "4",
+      "customer[tags]": "DOB:03/04/1979,+size:4",
+      "customer[email]": "{email}",
+      "customer[password]": "{password}",
+      "customer[accepts_marketing]": [
+        "",
+        "on"
+      ],
+      "login_with_shop[analytics_trace_id]": "fa891e03-b819-4a7b-b2fe-cc58b3285746"
+    }
+  },
+  "american treasures": {
+    "url": "https://americantreasures.co.uk/account",
+    "data": {
+      "form_type": "create_customer",
+      "utf8": "✓",
+      "customer[first_name]": "adam",
+      "customer[last_name]": "monkey",
+      "customer[email]": "{email}",
+      "customer[password]": "{password}",
+      "login_with_shop[analytics_trace_id]": "c5ad6367-4afe-425b-ade2-9399b19d2acb"
+    }
+  },
   "example": {
     "note": "this is just a template dont worry",
     "url": "https://example.com"
