@@ -4,6 +4,12 @@ summary: this is a script that signs up the entered email for random services. t
 
 if you want to make a better version feel free to use anything from here (you know who you are, but i refuse you name you since i live in your head rent free)
 
+if you want some throwaway emails to test this with here
+- https://mail.tm/en/
+- https://mail.gw/en/
+- https://temp-mail.io/en
+- https://tempmailo.com/
+
 ![image](https://github.com/user-attachments/assets/df0e2d68-5838-4937-9469-d5cc9c490e06)
 
 ![image](https://github.com/user-attachments/assets/6e21cb55-8133-45c6-b3c6-60e3356d6a6d)
@@ -11,12 +17,6 @@ if you want to make a better version feel free to use anything from here (you kn
 trigger warning // video contains good music
 
 https://github.com/user-attachments/assets/c98d32ed-8b36-4cc9-a234-8df8f17f8020
-
-if you want some throwaway emails to test this with here
-- https://mail.tm/en/
-- https://mail.gw/en/
-- https://temp-mail.io/en
-- https://tempmailo.com/
 
 ## how to use
 1. pip install aiohttp
