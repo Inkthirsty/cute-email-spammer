@@ -1,10 +1,10 @@
-import asyncio, aiohttp, time, re, random, string, itertools, os, json, math
+import asyncio, aiohttp, time, re, random, string, itertools, os, json
 
 # CONFIG ^_^
 size = 500 # threads per iteration
 cap = 2000  # thread limit / set to None for unlimited (i do NOT recommend higher than 500)
 random_threads = True # if set to true threads will happen in a random order
-timeout = aiohttp.ClientTimeout(total=15)
+timeout = aiohttp.ClientTimeout(total=20)
 
 # skidded from chatgpt
 def generate_email_variants(email):
@@ -125,14 +125,15 @@ async def fetch(session: aiohttp.ClientSession, sub: str, info, name: str = None
                         evaluation = "FAILURE"
                         status = 400
                 resp = resp.strip().replace("\n", "").replace("\r", "").replace("\t", "")[:1000]
-                status_codes[name] = {
-                    "method": method,
-                    "status": status,
-                    "evaluation": evaluation,
-                    "url": url,
-                    "resp": resp
-                }
-    except (Exception, asyncio.CancelledError, AssertionError):
+                if status_codes.get(name) is None:
+                    status_codes[name] = {
+                        "method": method,
+                        "status": status,
+                        "evaluation": evaluation,
+                        "url": url,
+                        "resp": resp
+                    }
+    except (Exception, asyncio.CancelledError, AssertionError, TimeoutError) as err:
         pass
     return update_progress()
     
@@ -221,6 +222,9 @@ async def main():
                 print(f"{len(test_tasks):,} endpoints have been tested -- {round((len(functions)/len(test_tasks))*100, 1):.1f}% success rate")
                 total = len(functions) * len(variants)
                 progress = 0
+            with open(os.path.join(directory, "results.txt"), "w", encoding="utf-8") as file:
+                e = "\n\n".join([(f"{name or 'Unknown'} -- {values.get('method')} -- {values.get('status')} -- {values.get('evaluation')}\nURL: {values.get('url')}\nRESPONSE: {values.get('resp')}") for name, values in status_codes.items()])
+                file.write(e)
             print("🧵 initializing threads...")
             start = time.time()
             global timeout
@@ -234,8 +238,6 @@ async def main():
                 try: await asyncio.gather(*tasks)
                 except Exception: pass
                 await asyncio.sleep(1)
-            with open(os.path.join(directory, "results.txt"), "w", encoding="utf-8") as file:
-                file.write("\n\n".join([(f"{name or 'Unknown'} -- {values['method']} -- {values['status']} -- {values['evaluation']}\nURL: {values['url']}\nRESPONSE: {values['resp']}") for name, values in status_codes.items()]))
             taken = time.time() - start
             minutes, seconds = int(taken // 60), int(taken % 60)
             print(f"attempted to send {total:,} emails in {minutes}:{seconds:02}")
@@ -244,6 +246,9 @@ async def main():
                 words = ", ".join(random.sample(await resp.json(), k=5))
             prefix = "an" if words[0] in "aeiou" else "a"
             print(f"i hope you have {prefix} {words} day ^_^")
+            with open(os.path.join(directory, "results.txt"), "w", encoding="utf-8") as file:
+                e = "\n\n".join([(f"{name or 'Unknown'} -- {values.get('method')} -- {values.get('status')} -- {values.get('evaluation')}\nURL: {values.get('url')}\nRESPONSE: {values.get('resp')}") for name, values in status_codes.items()])
+                file.write(e)
     except Exception as error:
         print(error)
         print("it seems like the program has died before pope francis")

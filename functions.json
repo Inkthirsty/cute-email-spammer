@@ -608,13 +608,13 @@
       "password": "{password}"
     }
   },
-  "911 memorial": {
+  "9/11 memorial": {
     "url": "https://www.911memorial.org/user/register",
     "data": {
       "mail": "{email}",
       "name": "{username}",
-      "pass[pass1]": "idid9/11_XD",
-      "pass[pass2]": "idid9/11_XD",
+      "pass[pass1]": "sorry123_AA",
+      "pass[pass2]": "sorry123_AA",
       "field_address[given_name]": "Michael",
       "field_address[family_name]": "Jackson",
       "registry_address[country_code]": "",
@@ -1438,6 +1438,58 @@
       "customer[password]": "{password}",
       "login_with_shop[analytics_trace_id]": "c5ad6367-4afe-425b-ade2-9399b19d2acb"
     }
+  },
+  "pitchfork": {
+	  "note":"sends 3 emails ^_^",
+    "url": "https://pitchfork.com/api/savePreference",
+	"json":
+	
+				{
+			"amgUUID": "",
+			"email": "{email}",
+			"isLoggedIn": false,
+			"metadata": {
+				"client": "Verso-Pitchfork",
+				"formname": "newsletter-subscribe-multiple",
+				"source": "subscribe-page"
+			},
+			"sailthruId": null,
+			"variables": {
+				"consents": [
+					{
+						"id": "248912",
+						"status": true,
+						"timestamp": "2024-10-05T22:36:16.850Z",
+						"type": "newsletter"
+					},
+					{
+						"id": "248945",
+						"status": true,
+						"timestamp": "2024-10-05T22:36:16.850Z",
+						"type": "newsletter"
+					},
+					{
+						"id": "248913",
+						"status": true,
+						"timestamp": "2024-10-05T22:36:16.850Z",
+						"type": "newsletter"
+					},
+					{
+						"id": "657fe98d6be3b0fdf26b81ab",
+						"status": false,
+						"timestamp": "2024-10-05T22:36:16.850Z",
+						"type": "marketing"
+					},
+					{
+						"id": "657fe98d6be3b0fdf26b81ac",
+						"status": false,
+						"timestamp": "2024-10-05T22:36:16.850Z",
+						"type": "marketing"
+					}
+				]
+			}
+		}
+	
   },
   "example": {
     "note": "this is just a template dont worry",
