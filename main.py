@@ -1,7 +1,7 @@
 import asyncio, aiohttp, time, re, random, string, itertools, os, json
 
 # CONFIG ^_^
-size = 500 # threads per iteration
+size = 800 # threads per iteration
 cap = 2000  # thread limit / set to None for unlimited (i do NOT recommend higher than 500)
 random_threads = True # if set to true threads will happen in a random order
 timeout = aiohttp.ClientTimeout(total=20)
@@ -237,7 +237,7 @@ async def main():
                 tasks = [asyncio.create_task(fetch(*task)) for task in queue[j:j+size]]
                 try: await asyncio.gather(*tasks)
                 except Exception: pass
-                await asyncio.sleep(1)
+                await asyncio.sleep(0)
             taken = time.time() - start
             minutes, seconds = int(taken // 60), int(taken % 60)
             print(f"attempted to send {total:,} emails in {minutes}:{seconds:02}")
