@@ -1440,56 +1440,61 @@
     }
   },
   "pitchfork": {
-	  "note":"sends 3 emails ^_^",
+    "note": "sends 3 emails ^_^",
     "url": "https://pitchfork.com/api/savePreference",
-	"json":
-	
-				{
-			"amgUUID": "",
-			"email": "{email}",
-			"isLoggedIn": false,
-			"metadata": {
-				"client": "Verso-Pitchfork",
-				"formname": "newsletter-subscribe-multiple",
-				"source": "subscribe-page"
-			},
-			"sailthruId": null,
-			"variables": {
-				"consents": [
-					{
-						"id": "248912",
-						"status": true,
-						"timestamp": "2024-10-05T22:36:16.850Z",
-						"type": "newsletter"
-					},
-					{
-						"id": "248945",
-						"status": true,
-						"timestamp": "2024-10-05T22:36:16.850Z",
-						"type": "newsletter"
-					},
-					{
-						"id": "248913",
-						"status": true,
-						"timestamp": "2024-10-05T22:36:16.850Z",
-						"type": "newsletter"
-					},
-					{
-						"id": "657fe98d6be3b0fdf26b81ab",
-						"status": false,
-						"timestamp": "2024-10-05T22:36:16.850Z",
-						"type": "marketing"
-					},
-					{
-						"id": "657fe98d6be3b0fdf26b81ac",
-						"status": false,
-						"timestamp": "2024-10-05T22:36:16.850Z",
-						"type": "marketing"
-					}
-				]
-			}
-		}
-	
+    "json": {
+      "amgUUID": "",
+      "email": "{email}",
+      "isLoggedIn": false,
+      "metadata": {
+        "client": "Verso-Pitchfork",
+        "formname": "newsletter-subscribe-multiple",
+        "source": "subscribe-page"
+      },
+      "sailthruId": null,
+      "variables": {
+        "consents": [
+          {
+            "id": "248912",
+            "status": true,
+            "timestamp": "2024-10-05T22:36:16.850Z",
+            "type": "newsletter"
+          },
+          {
+            "id": "248945",
+            "status": true,
+            "timestamp": "2024-10-05T22:36:16.850Z",
+            "type": "newsletter"
+          },
+          {
+            "id": "248913",
+            "status": true,
+            "timestamp": "2024-10-05T22:36:16.850Z",
+            "type": "newsletter"
+          },
+          {
+            "id": "657fe98d6be3b0fdf26b81ab",
+            "status": false,
+            "timestamp": "2024-10-05T22:36:16.850Z",
+            "type": "marketing"
+          },
+          {
+            "id": "657fe98d6be3b0fdf26b81ac",
+            "status": false,
+            "timestamp": "2024-10-05T22:36:16.850Z",
+            "type": "marketing"
+          }
+        ]
+      }
+    }
+  },
+  "void.cat": {
+    "url": "https://void.cat/auth/register",
+    "json": {
+      "captcha": "",
+      "password": "{password}",
+      "username": "{email}"
+    }
   },
   "example": {
     "note": "this is just a template dont worry",
