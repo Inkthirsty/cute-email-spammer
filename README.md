@@ -27,7 +27,7 @@ https://github.com/user-attachments/assets/c98d32ed-8b36-4cc9-a234-8df8f17f8020
 4. let it do its magic
 5. enjoy ^_^
 
-alternatively you can paste main.py into a site like trinket and it might work for a little bit but break cuz browser go kaboom
+alternatively you can run main.py on a site like replit and it might work for a little bit but break cuz browser go kaboom
 
 ## info
 - intentionally slow because python is shit and i dont know any other programming languages
