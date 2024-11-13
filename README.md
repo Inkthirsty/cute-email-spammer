@@ -1,4 +1,4 @@
-my friend ego made a better version of this and you should totally use it instead ^_^ https://github.com/disbuted/Email-Spammer/tree/main
+my friend ego made a better version of this and you should use it instead, i am still partially involved with its creation https://github.com/disbuted/Email-Spammer/tree/main
 
 # cute-email-spammer
 
@@ -33,7 +33,7 @@ alternatively you can run main.py on a site like replit and it might work for a 
 
 ## info
 - intentionally slow because python is shit and i dont know any other programming languages
-- u can flood inboxes of people u don't like
+- u can flood ur inbox
 - i didn't bother with optimisation
 - around 70% success rate (some apis might have changed how they work because of me lol)
 - i live in the uk so some apis may not work for you
@@ -49,4 +49,4 @@ alternatively you can run main.py on a site like replit and it might work for a 
 - gacekkosmatek - didnt directly contribute, but caused my async & try addiction
 - wv8 - helping me optimise this + giving me motivation to work on it + telling me to add a timeout
 - chelpus - giving feedback + giving me a fast generate function 
-
+- ego https://github.com/disbuted - remaking this and improving it
