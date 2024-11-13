@@ -1,3 +1,5 @@
+my friend ego made a better version of this and you should totally use it instead ^_^ https://github.com/disbuted/Email-Spammer/tree/main
+
 # cute-email-spammer
 
 summary: this is a script that signs up the entered email for random services. this wasnt a serious project so its not very fast or well presented but if you for some reason need to use this then enjoy...
